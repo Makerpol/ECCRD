@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.FileInfoMapper">
+
+	<!-- 公共的字段，F_FILE_DOWN_PATH(FILE_ID) FILE_DOWN_URL -->
+	<sql id="surfaceColumn">FILE_ID, FILE_HASH, FILE_TYPE, FILE_NAME, FILE_UUID, FILE_PATH, FILE_EXTE, FILE_LENGTH, FILE_TIME, 
+	DATE_FORMAT(FILE_TIME, '%Y-%m-%d %T') FILE_TIME_FULL, F_DICT_NAME('FILE_TYPE', FILE_TYPE) FILE_TYPE_NAME, 
+	FILE_LENGTH_STR, FILE_STATUS, F_DICT_NAME('FILE_STATUS', FILE_STATUS) FILE_STATUS_NAME</sql>
+	
+	<!-- 查询文件信息 -->
+	<select id="selectFileInfoByType" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM FILE_INFO 
+		<where>
+		<if test="type != null">
+			FILE_TYPE = #{type}
+		</if>
+		</where>
+		ORDER BY FILE_TIME DESC, FILE_ID DESC
+	</select>
+	
+	<!-- 搜索文件信息 -->
+	<select id="selectFileInfoBySearch" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM FILE_INFO 
+		<where>
+		<if test="fileId != null">
+			AND FILE_ID = #{fileId}
+		</if>
+		<if test="type != null">
+			AND FILE_TYPE = #{type}
+		</if>
+		<if test="typeDel != null">
+			AND FILE_TYPE in (2,3)
+		</if>
+		<if test="name != null">
+			AND FILE_NAME LIKE CONCAT('%', #{name}, '%')
+		</if>
+		<if test="hash != null">
+			AND FILE_HASH = #{hash}
+		</if>
+		<if test="uuid != null">
+			AND FILE_UUID = #{uuid}
+		</if>
+		<if test="exte != null">
+			AND FILE_EXTE = #{exte}
+		</if>
+		<if test="maxLength != null">
+			AND FILE_LENGTH &lt;= #{maxLength}
+		</if>
+		<if test="minLength != null">
+			AND FILE_LENGTH &gt;= #{minLength}
+		</if>
+		<if test="endTime != null">
+			AND FILE_TIME &lt;= #{endTime}
+		</if>
+		<if test="startTime != null">
+			AND FILE_TIME &gt;= #{startTime}
+		</if>
+		<if test="status != null">
+			AND FILE_STATUS = #{status}
+		</if>
+		</where>
+		<if test="sort != null and order != null">
+			ORDER BY ${sort} ${order}
+		</if>
+	</select>
+	
+	<!-- 通过UUID查询文件信息 -->
+	<select id="selectFileInfoByUuid" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM FILE_INFO WHERE FILE_UUID = #{uuid}
+	</select>
+	
+	<!-- 通过ID查询文件信息 -->
+	<select id="selectFileInfoById" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM FILE_INFO WHERE FILE_ID=#{fileId}
+	</select>
+	
+	<!-- 删除文件信息 -->
+	<delete id="deleteFileInfoById" parameterType="map">
+		DELETE FROM FILE_INFO WHERE FILE_ID=#{fileId}
+	</delete>
+	
+	<!-- 删除文件信息 -->
+	<delete id="deleteFileInfoByUuid" parameterType="map">
+		DELETE FROM FILE_INFO WHERE FILE_UUID=#{uuid}
+	</delete>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+	<update id="updateFileStatusById" parameterType="map">
+		UPDATE FILE_INFO SET FILE_STATUS = #{status} WHERE FILE_ID=#{fileId}
+	</update>
+	
+	<update id="updateFileStatusByIdAndFileName" parameterType="map">
+		UPDATE FILE_INFO SET FILE_STATUS = #{status} WHERE FILE_ID &lt;&gt; #{fileId} AND FILE_NAME = #{name}
+	</update>
+	
+	<!-- 插入文件信息 -->
+	<insert id="insertFileInfo" parameterType="map">
+		INSERT INTO FILE_INFO (FILE_HASH, FILE_TYPE, FILE_NAME, FILE_UUID, FILE_PATH, FILE_EXTE, FILE_LENGTH, 
+		FILE_LENGTH_STR, FILE_TIME, FILE_STATUS) VALUES (#{hash}, #{type}, 
+		#{name}, #{uuid}, #{path}, #{exte}, 
+		#{length}, #{lengthStr}, CURRENT_TIMESTAMP, 1)
+	</insert>
+</mapper>

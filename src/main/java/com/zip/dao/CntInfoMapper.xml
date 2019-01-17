@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.CntInfoMapper">
+
+	<!-- 公共的字段 -->
+	<sql id="surfaceColumn">CNT_ID, CNT_TITLE, CNT_MODEL, F_MT_NAME(CNT_MODEL) CNT_MODEL_NAME, CNT_TYPE, F_MT_NAME(CNT_TYPE) CNT_TYPE_NAME, 
+	CNT_CONTENT, CNT_COUNT, INSERT_TIME, DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE, UPDATE_TIME, DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d %T') UPDATE_TIME_FULL, 
+	DATE_FORMAT(INSERT_TIME, '%Y-%m-%d %T') INSERT_TIME_FULL, CNT_FROM, CNT_URL, USER_ID, F_USER_NAME(USER_ID) USER_NAME, 
+	DATE_FORMAT(UPDATE_TIME, '%m-%d') UPDATE_TIME_SIMPLE, CNT_STATUS, F_DICT_NAME('CNT_STATUS', CNT_STATUS) CNT_STATUS_NAME, F_DICT_NAME('INST_TYPE', CNT_TYPE) INST_TYPE_NAME</sql>
+	
+	<!-- 查询文本信息 -->
+	<select id="selectCntBySearch" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM CNT_INFO 
+		<where>
+			<if test="cntId != null">
+			AND CNT_ID =#{cntId}
+			</if>
+			<if test="title != null">
+			AND CNT_TITLE LIKE CONCAT('%', #{title}, '%')
+			</if>
+			<if test="status != null">
+			AND CNT_STATUS =#{status}
+			</if>
+			<if test="model != null">
+			AND CNT_MODEL =#{model}
+			</if>
+			<if test="type != null">
+			AND CNT_TYPE =#{type}
+			</if>
+			<if test="end != null">
+			AND INSERT_TIME &lt;= #{end}
+			</if>
+			<if test="start != null">
+			AND INSERT_TIME &gt;= #{start}
+			</if>
+			<if test="user != null">
+			AND USER_ID = F_USER_ID(#{user})
+			</if>
+		</where>
+		<if test="sort != null and order != null">
+			ORDER BY ${sort} ${order}
+		</if>
+	</select>
+	
+	<select id="selectCntById" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM CNT_INFO WHERE CNT_ID =#{cntId}
+	</select>
+	
+	<insert id="insertCntInfo" parameterType="map">
+		INSERT INTO CNT_INFO (CNT_TITLE, CNT_MODEL, CNT_TYPE, CNT_CONTENT, CNT_COUNT, INSERT_TIME, CNT_FROM, CNT_URL, USER_ID, CNT_STATUS, UPDATE_TIME) 
+		VALUES (#{title}, #{model}, #{type}, #{content}, 0, CURRENT_TIMESTAMP, #{from}, #{url}, #{userId}, 1, CURRENT_TIMESTAMP)
+	</insert>
+	
+	<update id="updateStatusById" parameterType="map">
+		UPDATE CNT_INFO SET UPDATE_TIME=CURRENT_TIMESTAMP , CNT_STATUS=#{status} WHERE CNT_ID =#{cntId}
+	</update>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+	<update id="updateCntInfoById" parameterType="map">
+		UPDATE CNT_INFO
+		<set>
+			UPDATE_TIME=CURRENT_TIMESTAMP,
+			<if test="title != null">
+			CNT_TITLE=#{title},
+			</if>
+			<if test="model != null">
+			CNT_MODEL=#{model},
+			</if>
+			<if test="type != null">
+			CNT_TYPE=#{type},
+			</if>
+			<if test="content != null">
+			CNT_CONTENT=#{content}, 
+			</if>
+			<if test="count">
+			CNT_COUNT=#{count},
+			</if>
+			<if test="from != null">
+			CNT_FROM=#{from},
+			</if>
+			<if test="url != null">
+			CNT_URL=#{url},
+			</if>
+		</set>
+		  WHERE CNT_ID =#{cntId}
+	</update>
+	
+	<update id="updateCountById" parameterType="map">
+		UPDATE CNT_INFO SET CNT_COUNT=#{count} WHERE CNT_ID =#{cntId}
+	</update>
+	
+	<delete id="deleteCntInfoById" parameterType="map">
+		DELETE FROM CNT_INFO WHERE CNT_ID =#{cntId}
+	</delete>
+	
+	<!-- 前端页面获取信息列表 -->
+	<select id="selectCntByList" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM CNT_INFO WHERE CNT_STATUS =1 
+		<if test="model != null">
+		AND CNT_MODEL =#{model}
+		</if>
+		<if test="type != null">
+		AND CNT_TYPE =#{type}
+		</if>
+		ORDER BY UPDATE_TIME DESC, CNT_ID DESC LIMIT 0, ${max}
+	</select>
+	
+	<!-- 根据操作人Id查询本月各个栏目上传文章数量 -->
+	<select id="selectCntCountByUserId" resultType="map" parameterType="map">
+		SELECT F_MT_NAME(CNT_TYPE) name, count(1) value FROM CNT_INFO WHERE month(INSERT_TIME)=#{month}
+		<if test="userId != null">
+			AND USER_ID=#{userId} 
+		</if>
+		GROUP BY CNT_TYPE
+	</select>
+	
+	<!-- 根据操作人ID以及当前年份，获取本年度每月上传文章数量 -->
+	<select id="selectCntCountByAllMonth" resultType="map" parameterType="map">
+		SELECT   
+		sum(case month(INSERT_TIME) when '1' then 1 else 0 end) as a,  
+		sum(case month(INSERT_TIME) when '2' then 1 else 0 end) as b,  
+		sum(case month(INSERT_TIME) when '3' then 1 else 0 end) as c,  
+		sum(case month(INSERT_TIME) when '4' then 1 else 0 end) as d,  
+		sum(case month(INSERT_TIME) when '5' then 1 else 0 end) as e,  
+		sum(case month(INSERT_TIME) when '6' then 1 else 0 end) as f,  
+		sum(case month(INSERT_TIME) when '7' then 1 else 0 end) as g,  
+		sum(case month(INSERT_TIME) when '8' then 1 else 0 end) as h,  
+		sum(case month(INSERT_TIME) when '9' then 1 else 0 end) as i,  
+		sum(case month(INSERT_TIME) when '10' then 1 else 0 end) as j,  
+		sum(case month(INSERT_TIME) when '11' then 1 else 0 end) as k,  
+		sum(case month(INSERT_TIME) when '12' then 1 else 0 end) as l  
+		FROM CNT_INFO  
+		WHERE year(INSERT_TIME)=#{year}
+		<if test="userId != null">
+			AND USER_ID=#{userId}
+		</if>
+	</select>
+</mapper>

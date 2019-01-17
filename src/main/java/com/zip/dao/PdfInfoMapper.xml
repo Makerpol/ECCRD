@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.PdfInfoMapper">
+
+	<!-- 公共的字段 -->
+	<sql id="surfaceColumn">PDF_ID, PDF_TITLE, PDF_URL, FILE_ID, F_FILE_URL(FILE_ID) FILE_URL, PDF_TYPE, PDF_PATH,
+	F_DICT_NAME('PDF_TYPE', PDF_TYPE) PDF_TYPE_NAME, PDF_STATUS, F_DICT_NAME("PDF_STATUS", PDF_STATUS) PDF_STATUS_NAME,
+	INSERT_TIME, DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE, UPDATE_TIME, DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d %T') UPDATE_TIME_FULL, 
+	DATE_FORMAT(INSERT_TIME, '%Y-%m-%d %T') INSERT_TIME_FULL,F_USER_NAME(USER_ID) USER_NAME</sql>
+
+	<select id="selectPdfInfoBySearch" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM PDF_INFO
+		<where>
+			<if test="pdfId != null">
+			AND PDF_ID =#{pdfId}
+			</if>
+			<if test="title != null">
+			AND PDF_TITLE LIKE CONCAT('%', #{title}, '%')
+			</if>
+			<if test="type != null">
+			AND PDF_TYPE =#{type}
+			</if>
+			<if test="status != null">
+			AND ANNOUN_STATUS =#{status}
+			</if>
+			<if test="end != null">
+			AND INSERT_TIME &lt;= #{end}
+			</if>
+			<if test="start != null">
+			AND INSERT_TIME &gt;= #{start}
+			</if>
+			<if test="userName != null">
+			AND USER_ID = F_USER_ID(#{userName})
+			</if>
+		</where>
+		<if test="sort != null and order != null">
+			ORDER BY ${sort} ${order}
+		</if>
+	</select>
+	
+	<select id="selectPdfInfoById" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM PDF_INFO WHERE PDF_ID =#{pdfId}
+	</select>
+
+	<insert id="insertPdfInfo" parameterType="map">
+		INSERT INTO PDF_INFO(PDF_TITLE, PDF_URL, FILE_ID, PDF_TYPE, PDF_STATUS, INSERT_TIME, UPDATE_TIME, USER_ID, PDF_PATH) 
+		VALUES(#{title}, #{url}, #{fileId}, #{type}, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{userId}, #{path})
+	</insert>
+	
+	<update id="updatePdfInfoById" parameterType="map">
+		UPDATE PDF_INFO 
+		<set>
+		<if test="title != null">
+			PDF_TITLE=#{title},
+		</if>
+		<if test="url != null">
+			PDF_URL=#{url},
+		</if>
+		<if test="fileId != null">
+			FILE_ID=#{fileId},
+		</if>
+		<if test="type != null">
+			PDF_TYPE=#{type},
+		</if>
+		</set> 
+		WHERE PDF_ID =#{pdfId}
+	</update>
+	
+	<delete id="deletePdfInfoById" parameterType="map">
+		DELETE FROM PDF_INFO WHERE PDF_ID =#{pdfId}
+	</delete>
+	
+	<select id="selectPdfInfoByType" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM PDF_INFO WHERE PDF_TYPE =#{type} ORDER BY PDF_ID DESC
+	</select>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+	<!-- 前端页面获取PDF列表 -->
+	<select id="selectPdfInfoByList" parameterType="map" resultType="map">
+		<![CDATA[
+		SELECT p1.* FROM PDF_INFO p1 
+		 	inner join 
+		 (SELECT p2.PDF_TYPE, p2.UPDATE_TIME FROM PDF_INFO p2 
+		 	left join PDF_INFO p3
+		 	on p2.PDF_TYPE=p3.PDF_TYPE and p2.UPDATE_TIME<=p3.UPDATE_TIME
+		 	group by p2.PDF_TYPE, P2.UPDATE_TIME
+		 	having count(p3.UPDATE_TIME)<=1
+		 )p4
+		on p1.PDF_TYPE=p4.PDF_TYPE and p1.UPDATE_TIME=p4.UPDATE_TIME
+		order by p1.PDF_TYPE, p1.UPDATE_TIME;
+		]]>
+	</select>
+	
+</mapper>

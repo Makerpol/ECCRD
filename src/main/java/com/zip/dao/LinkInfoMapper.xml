@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.LinkInfoMapper">
+
+	<sql id="surfaceColumn">LINK_ID, LINK_TITLE, LINK_URL</sql>
+	
+	<select id="selectLinkInfoBySearch" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM LINK_INFO
+		<where>
+			<if test="title != null">
+			AND LINK_TITLE LIKE CONCAT('%', #{title}, '%')
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertLinkInfo" parameterType="map">
+		INSERT INTO LINK_INFO(LINK_TITLE, LINK_URL) VALUES(#{title}, #{url})
+	</insert>
+	
+	<update id="updateLinkInfoById" parameterType="map">
+		UPDATE LINK_INFO 
+		<set>
+			<if test="title != null">
+			LINK_TITLE =#{title},
+			</if>
+			<if test="url != null">
+			LINK_URL =#{url},
+			</if>
+		</set>
+		WHERE LINK_ID =#{linkId}
+	</update>
+	
+	<delete id="deleteLinkInfoById" parameterType="map">
+		DELETE FROM LINK_INFO WHERE LINK_ID =#{linkId}
+	</delete>
+	
+	<select id="selectLinkInfoById" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM LINK_INFO WHERE LINK_ID =#{linkId}
+	</select>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+</mapper>

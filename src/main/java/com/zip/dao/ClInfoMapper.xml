@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.ClInfoMapper">
+
+	<!-- 公共的字段 -->
+	<sql id="surfaceColumn">CL_ID, CL_TITLE, CL_URL, FILE_ID, F_FILE_URL(FILE_ID) FILE_URL, 
+	CL_TYPE, F_DICT_NAME('CL_TYPE', CL_TYPE) CL_TYPE_NAME</sql>
+	
+	<!-- 查询轮播 -->
+	<select id="selectClInfoBySearch" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM CL_INFO 
+		<where>
+			<if test="clId != null">
+			AND CL_ID =#{clId}
+			</if>
+			<if test="title != null">
+			AND CL_TITLE LIKE CONCAT('%', #{title}, '%')
+			</if>
+			<if test="type != null">
+			AND CL_TYPE =#{type}
+			</if>
+		</where>
+		<if test="sort != null and order != null">
+			ORDER BY ${sort} ${order}
+		</if>
+	</select>
+	
+	<select id="selectClInfoById" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM CL_INFO WHERE CL_ID =#{clId}
+	</select>
+	
+	<insert id="insertClInfo" parameterType="map">
+		INSERT INTO CL_INFO(CL_TITLE, CL_URL, FILE_ID, CL_TYPE) VALUES (#{title}, #{url}, #{fileId}, #{type})
+	</insert>
+	
+	<update id="updateClInfoById" parameterType="map">
+		UPDATE CL_INFO 
+		<set>
+		<if test="title != null">
+			CL_TITLE=#{title},
+		</if>
+		<if test="url != null">
+			CL_URL=#{url},
+		</if>
+		<if test="fileId != null">
+			FILE_ID=#{fileId},
+		</if>
+		<if test="type != null">
+			CL_TYPE=#{type},
+		</if>
+		</set> 
+		WHERE CL_ID =#{clId}
+	</update>
+	
+	<delete id="deleteClInfoById" parameterType="map">
+		DELETE FROM CL_INFO WHERE CL_ID =#{clId}
+	</delete>
+	
+	<select id="selectClInfoByType" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM CL_INFO WHERE CL_TYPE =#{type} ORDER BY CL_ID DESC
+	</select>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+</mapper>

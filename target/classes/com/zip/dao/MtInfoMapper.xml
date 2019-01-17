@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.MtInfoMapper">
+
+	<!-- 公共的字段 -->
+	<sql id="surfaceColumn">MT_ID, MT_NAME, MT_PARENT, MT_NTOTE, F_MT_NAME(MT_PARENT) MT_PARENT_NAME</sql>
+	
+	<!-- 通过检索框参数查询 -->
+	<select id="selectMtInfoBySearch" resultType="map"  parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM MT_INFO 
+		<where>
+			<if test="mtName != null">
+				AND MT_NAME LIKE CONCAT('%', #{mtName}, '%')
+			</if>
+			<if test="parent != null">
+				AND MT_PARENT =#{parent}
+			</if>
+		</where>
+	</select>
+    
+    <!-- 通过模块ID查询 -->
+    <select id="selectMtInfoById" resultType="map" parameterType="map">
+    	SELECT <include refid="surfaceColumn"/> FROM MT_INFO WHERE MT_ID =#{mtId} 
+    </select>
+    
+    <select id="selectMtInfoByParentId" resultType="map" parameterType="map">
+    	SELECT <include refid="surfaceColumn"/> FROM MT_INFO WHERE MT_PARENT =#{model} 
+    </select>
+	
+	<select id="selectAllParentMt" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM MT_INFO WHERE MT_PARENT =0
+	</select>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+	<insert id="insertMtInfo" parameterType="map">
+		INSERT INTO MT_INFO(MT_NAME, MT_PARENT, MT_NTOTE) 
+		VALUES(#{mtName},#{parent},#{mtNtote})
+	</insert>
+	
+	<delete id="deleteMtInfoById"  parameterType="map">
+		DELETE FROM MT_INFO WHERE MT_ID =#{mtId}
+	</delete>
+	
+	<update id="updateMtInfoById" parameterType="map">
+		UPDATE MT_INFO 
+		<set>
+			<if test="mtName != null">
+				MT_NAME =#{mtName},
+			</if>
+			<if test="mparent != null">
+				MT_PARENT =#{parent},
+			</if>
+			<if test="mtNtote != null">
+				MT_NTOTE =#{mtNtote},
+			</if>
+		</set>
+		WHERE MT_ID =#{mtId}
+	</update>
+</mapper>

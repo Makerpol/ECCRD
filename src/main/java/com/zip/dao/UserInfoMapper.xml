@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.UserInfoMapper">
+
+	<!-- 公共的字段 -->
+	<sql id="surfaceColumn">USER_ID, USER_NAME, USER_PASS, USER_STATUS, USER_NOTE, F_ROLE_NAME(USER_ID) ROLE_NAME,  
+	DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE, CERT_SN, F_ROLE_ID(USER_ID) ROLE_ID, 
+	DATE_FORMAT(LAST_LOGIN_TIME, '%Y-%m-%d %T') LAST_LOGIN_TIME_FULL</sql>
+	
+	<!-- 通过用户名查询用户信息 -->
+	<select id="selectUserByName" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM USER_INFO WHERE USER_NAME=#{userName} 
+	</select>
+	
+	<select id="selectUserByNameCount" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM USER_INFO WHERE USER_NAME=#{userName}
+		<if test="userId != null">
+		AND USER_ID &lt;&gt; #{userId}
+		</if>
+	</select>
+	
+	<select id="selectUserById" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM USER_INFO WHERE USER_ID=#{userId} 
+	</select>
+	
+	<select id="selectUserBySearch" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM USER_INFO
+		<where>
+			USER_NAME &lt;&gt; 'admin'
+			<if test="userName != null">
+			AND USER_NAME LIKE CONCAT('%', #{userName}, '%')
+			</if>
+			<if test="status != null">
+			AND USER_STATUS=#{status}
+			</if>
+			<if test="roleId != null">
+			AND F_ROLE_ID(USER_ID)=#{roleId}
+			</if>
+			<if test="sn != null">
+			AND CERT_SN=#{sn}
+			</if>
+			<if test="end != null">
+			AND INSERT_TIME &lt;= #{end}
+			</if>
+			<if test="start != null">
+			AND INSERT_TIME &gt;= #{start}
+			</if>
+			<if test="userId != null">
+			AND USER_ID = #{userId}
+			</if>
+		</where>
+		<if test="sort != null and order != null">
+			ORDER BY ${sort} ${order}
+		</if>
+	</select>
+	
+	<update id="updateUserLastLoginTime" parameterType="map">
+		UPDATE USER_INFO SET LAST_LOGIN_TIME = CURRENT_TIMESTAMP WHERE USER_ID = #{userId}
+	</update>
+	
+	<update id="updateUserStatus" parameterType="map">
+		UPDATE USER_INFO SET USER_STATUS = #{status} WHERE USER_ID = #{userId}
+	</update>
+	
+	<insert id="insertUser" parameterType="map">
+		INSERT INTO USER_INFO (USER_NAME, USER_PASS, USER_STATUS, INSERT_TIME, LAST_LOGIN_TIME, USER_NOTE, CERT_SN) 
+		VALUES (#{userName}, #{userPass}, 0, CURRENT_TIMESTAMP, NULL, #{note}, #{sn})
+	</insert>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+	<update id="updateUser" parameterType="map">
+		UPDATE USER_INFO SET USER_NOTE=#{note}, CERT_SN=#{sn} WHERE USER_ID = #{userId}
+	</update>
+	
+	<update id="updatePassById" parameterType="map">
+		UPDATE USER_INFO SET USER_PASS = #{userPass} WHERE USER_ID=#{userId} 
+	</update>
+</mapper>

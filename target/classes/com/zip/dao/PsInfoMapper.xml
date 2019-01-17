@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.PsInfoMapper">
+	
+	<sql id="surfaceColumn">PS_ID,PS_TYPE, PS_CONTENT</sql>
+	
+	<select id="selectPsInfoByType" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM PS_INFO WHERE PS_TYPE=#{type}
+	</select>
+	
+	<select id="selectPsInfoById" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM PS_INFO WHERE PS_ID=#{id}
+	</select>
+	
+	<insert id="insertPsInfo" parameterType="map">
+		INSERT INTO PS_INFO (PS_TYPE, PS_CONTENT) VALUES (#{type}, #{content})
+	</insert>
+	
+	<update id="updatePsInfo" parameterType="map">
+		UPDATE PS_INFO SET PS_CONTENT=#{content} WHERE PS_ID=#{id}
+	</update>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_2.xsd">
+	
+	<tlib-version>1.1.2</tlib-version>
+	
+	<jsp-version>2.2</jsp-version>
+	<!-- 标识 -->
+	<uri>/hc</uri>
+	<!-- 缩写 -->
+	<shortname>hc</shortname>
+
+	<!-- 权限验证标签 -->
+	<tag>
+		<name>url</name>
+		<tagclass>com.zip.tags.HcPermissionTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<!-- 权限ID -->
+		<attribute>
+			<!--  -->
+			<name>per</name>
+			<!-- 是否为必须 -->
+			<required>true</required>
+			<!-- 是否允许使用el表达式 -->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<!-- 角色名称 -->
+		<attribute>
+			<!--  -->
+			<name>roles</name>
+			<!-- 是否为必须 -->
+			<required>false</required>
+			<!-- 是否允许使用el表达式 -->
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		
+		<!-- 判断条件 -->
+		<attribute>
+			<!--  -->
+			<name>condition</name>
+			<!-- 是否为必须 -->
+			<required>false</required>
+			<!-- 是否允许使用el表达式 -->
+			<rtexprvalue>false</rtexprvalue>
+			
+		</attribute>
+	</tag>
+</taglib>

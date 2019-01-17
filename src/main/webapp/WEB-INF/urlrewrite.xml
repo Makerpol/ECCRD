@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+<urlrewrite>
+	<!-- 总分类 -->
+	<rule>
+		<note>url转义</note>
+		<from>/([a-zA-Z]+).shtml</from>
+		<to>/$1.do</to>
+	</rule>
+	<rule>
+		<note>url转义</note>
+		<from>/([a-zA-Z]+)/([a-zA-Z]+).shtml</from>
+		<to>/$1/$2.do</to>
+	</rule>
+	<rule>
+		<note>文本列表URL</note>
+		<from>/([a-zA-Z]+)/([a-zA-Z]+)/([0-9]+).shtml</from>
+		<to>/$1/$2.do?page=$3</to>
+	</rule>
+	<rule>
+		<note>文本URL</note>
+		<from>/([a-zA-Z]+)/([a-zA-Z]+)/([0-9]+)/([0-9]+)/([0-9]+).shtml</from>
+		<to>/$1/$2.do?model=$3&amp;type=$4&amp;id=$5</to>
+	</rule>
+	<rule>
+		<note>下载文件url转义</note>
+		<from>/downFile/([a-zA-Z0-9]+).([a-zA-Z0-9]+)</from>
+		<to>/downFile.do?uuid=$1&amp;exte=$2</to>
+	</rule>
+	<rule>
+		<note>展示图片url转义</note>
+		<from>/showFile/([a-zA-Z0-9]+).([a-zA-Z0-9]+)</from>
+		<to>/showFile.do?uuid=$1&amp;exte=$2</to>
+	</rule>
+</urlrewrite>

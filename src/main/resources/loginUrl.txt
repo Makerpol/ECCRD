@@ -1,0 +1,10 @@
+/sys/**
+/user/**
+/role/**
+/cntMgr/**
+/clMgr/**
+/instMgr/**
+/pdfMgr/**
+/link/**
+/annoMgr/**
+/mtUtil/**

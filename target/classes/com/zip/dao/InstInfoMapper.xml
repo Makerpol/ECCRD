@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.InstInfoMapper">
+
+	<!-- 公共的字段 -->
+	<sql id="surfaceColumn">INST_ID, INST_TITLE, INST_TYPE, INST_CONTENT, INST_COUNT, INSERT_TIME, DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE, UPDATE_TIME, DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d %T') UPDATE_TIME_FULL, 
+	DATE_FORMAT(INSERT_TIME, '%Y-%m-%d %T') INSERT_TIME_FULL, USER_ID, F_USER_NAME(USER_ID) USER_NAME, 
+	DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d') UPDATE_TIME_SIMPLE, F_DICT_NAME('INST_TYPE', INST_TYPE) INST_TYPE_NAME</sql>
+	
+	<!-- 查询文本信息 -->
+	<select id="selectInstBySearch" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM INST_INFO 
+		<where>
+			<if test="cntId != null">
+			AND INST_ID =#{instId}
+			</if>
+			<if test="title != null">
+			AND INST_TITLE LIKE CONCAT('%', #{title}, '%')
+			</if>
+			<if test="type != null">
+			AND INST_TYPE =#{type}
+			</if>
+			<if test="end != null">
+			AND INSERT_TIME &lt;= #{end}
+			</if>
+			<if test="start != null">
+			AND INSERT_TIME &gt;= #{start}
+			</if>
+			<if test="user != null">
+			AND USER_ID = F_USER_ID(#{user})
+			</if>
+		</where>
+		<if test="sort != null and order != null">
+			ORDER BY ${sort} ${order}
+		</if>
+	</select>
+	
+	<select id="selectInstById" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM INST_INFO WHERE INST_ID =#{instId}
+	</select>
+	
+	<insert id="insertInstInfo" parameterType="map">
+		INSERT INTO INST_INFO (INST_TITLE, INST_TYPE, INST_CONTENT, INST_COUNT, INSERT_TIME, USER_ID, UPDATE_TIME) 
+		VALUES (#{title}, #{type}, #{content}, 0, CURRENT_TIMESTAMP, #{userId}, CURRENT_TIMESTAMP)
+	</insert>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+	<update id="updateInstInfoById" parameterType="map">
+		UPDATE INST_INFO
+		<set>
+			UPDATE_TIME=CURRENT_TIMESTAMP,
+			<if test="title != null">
+			INST_TITLE=#{title},
+			</if>
+			<if test="type != null">
+			INST_TYPE=#{type},
+			</if>
+			<if test="content != null">
+			INST_CONTENT=#{content}, 
+			</if>
+			<if test="count">
+			INST_COUNT=#{count},
+			</if>
+		</set>
+		  WHERE INST_ID =#{instId}
+	</update>
+	
+	<delete id="deleteInstInfoById" parameterType="map">
+		DELETE FROM INST_INFO WHERE INST_ID =#{instId}
+	</delete>
+	
+	<!-- 前端页面获取信息列表 -->
+	<select id="selectInstByList" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM INST_INFO WHERE
+		<if test="type != null">
+		AND INST_TYPE =#{type}
+		</if>
+		ORDER BY UPDATE_TIME DESC, CNT_ID DESC LIMIT 0, ${max}
+	</select>
+</mapper>

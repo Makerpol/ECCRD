@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.RoleInfoMapper">
+
+	<!-- 公共的字段 -->
+	<sql id="surfaceColumn">ROLE_ID, ROLE_NAME, ROLE_NOTE</sql>
+	
+	<!-- 通过用户名查询用户信息 -->
+	<select id="selectRoleByName" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM ROLE_INFO WHERE ROLE_ID IN (
+		SELECT ROLE_ID FROM USER_ROLE WHERE USER_ID = F_USER_ID(#{userName})
+		)
+	</select>
+	
+	<select id="selectRole" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM ROLE_INFO WHERE ROLE_NAME &lt;&gt; 'admin' ORDER BY ROLE_ID ASC
+	</select>
+	
+	<select id="selectRoleBySearch" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM ROLE_INFO 
+		<where>
+			ROLE_NAME &lt;&gt; 'admin' 
+			<if test="roleName != null">
+				AND ROLE_NAME LIKE CONCAT('%', #{roleName}, '%')
+			</if>
+			<if test="roleId != null">
+				AND ROLE_ID = #{roleId}
+			</if>
+		</where>
+		<if test="sort != null and order != null">
+			ORDER BY ${sort} ${order}
+		</if>
+	</select>
+	
+	<select id="selectRoleCountByNameAndNotId" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM ROLE_INFO WHERE ROLE_NAME = #{roleName} 
+		<if test="roleId != null">
+		AND ROLE_ID &lt;&gt; #{roleId}
+		</if>
+	</select>
+	
+	<select id="selectRoleById" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM ROLE_INFO WHERE ROLE_ID = #{roleId}
+	</select>
+	
+	<insert id="insertRole" parameterType="map">
+		INSERT INTO ROLE_INFO (ROLE_NAME, ROLE_NOTE) VALUES (#{roleName}, #{note})
+	</insert>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+	<update id="updateRoleById" parameterType="map">
+		UPDATE ROLE_INFO SET ROLE_NAME = #{roleName}, ROLE_NOTE = #{note} WHERE ROLE_ID = #{roleId}
+	</update>
+	
+	<delete id="deleteRoleById" parameterType="map">
+		DELETE FROM ROLE_INFO WHERE ROLE_ID = #{roleId}
+	</delete>
+	
+	<delete id="deleteRolePerById" parameterType="map">
+		DELETE FROM ROLE_PERMISSION WHERE ROLE_ID = #{roleId}
+	</delete>
+	
+	<select id="selectUserCountByRole" parameterType="map" resultType="int">
+		SELECT COUNT(*) FROM USER_ROLE WHERE ROLE_ID = #{roleId}
+	</select>
+	
+	<insert id="insertRolePermission" parameterType="map">
+		INSERT INTO ROLE_PERMISSION (ROLE_ID, PER_ID) VALUES (#{roleId}, #{perId})
+	</insert>
+</mapper>

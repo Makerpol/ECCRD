@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.PermissionInfoMapper">
+
+	<!-- 公共的字段 -->
+	<sql id="surfaceColumn">PER_ID, PER_URL, PER_TITLE, PER_NAME, PER_STATUS, PER_NOTE, PER_PARENT, 
+	PER_PARAMS, PER_SORT, PER_ICON</sql>
+	
+	<!-- 通过用户名查询用户信息 -->
+	<select id="selectPermissionByRoleList" resultType="map" parameterType="list">
+		SELECT <include refid="surfaceColumn"/> FROM PERMISSION_INFO WHERE PER_ID IN (
+		SELECT PER_ID FROM ROLE_PERMISSION WHERE ROLE_ID IN 
+		<foreach collection="list" separator="," open="(" close=")" item="item">
+		#{item}
+		</foreach>
+		)
+	</select>
+	
+	<!-- 通过用户id查询用户权限信息 -->
+	<select id="selectPermissionByUserId" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM PERMISSION_INFO WHERE PER_ID IN (
+		SELECT PER_ID FROM ROLE_PERMISSION WHERE ROLE_ID IN (
+		SELECT ROLE_ID FROM USER_ROLE WHERE USER_ID = #{userId}
+		))
+	</select>
+	
+	<!-- 通过角色id查询用户权限信息 -->
+	<select id="selectPermissionByRoleId" resultType="map" parameterType="map">
+		SELECT <include refid="surfaceColumn"/> FROM PERMISSION_INFO WHERE PER_ID IN (
+		SELECT PER_ID FROM ROLE_PERMISSION WHERE ROLE_ID = #{roleId})
+	</select>
+	
+	<select id="selectPermission" resultType="map" >
+		SELECT <include refid="surfaceColumn"/> FROM PERMISSION_INFO WHERE PER_STATUS=0 
+		ORDER BY PER_PARENT ASC, PER_SORT ASC
+	</select>
+</mapper>

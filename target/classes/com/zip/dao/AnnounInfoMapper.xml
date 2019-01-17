@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zip.dao.AnnounInfoMapper">
+	
+	<!-- 公共的字段 -->
+	<sql id="surfaceColumn">ANNOUN_ID, ANNOUN_TITLE, ANNOUN_CONTENT, ANNOUN_COUNT, INSERT_TIME, DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE,
+	UPDATE_TIME, DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d %T') UPDATE_TIME_FULL,DATE_FORMAT(UPDATE_TIME, '%m-%d') UPDATE_TIME_SIMPLE, DATE_FORMAT(INSERT_TIME, '%Y-%m-%d %T') INSERT_TIME_FULL, ANNOUN_FROM, USER_ID, 
+	ANNOUN_URL, F_USER_NAME(USER_ID) USER_NAME, ANNOUN_STATUS, F_DICT_NAME('ANNOUN_STATUS', ANNOUN_STATUS) ANNOUN_STATUS_NAME</sql>
+
+	<select id="selectAnnounInfoBySearch" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM ANNOUN_INFO
+		<where>
+			<if test="announId != null">
+			AND ANNOUN_ID =#{announId}
+			</if>
+			<if test="title != null">
+			AND ANNOUN_TITLE LIKE CONCAT('%', #{title}, '%')
+			</if>
+			<if test="status != null">
+			AND ANNOUN_STATUS =#{status}
+			</if>
+			<if test="end != null">
+			AND INSERT_TIME &lt;= #{end}
+			</if>
+			<if test="start != null">
+			AND INSERT_TIME &gt;= #{start}
+			</if>
+			<if test="userName != null">
+			AND USER_ID = F_USER_ID(#{userName})
+			</if>
+		</where>
+		<if test="sort != null and order != null">
+			ORDER BY ${sort} ${order}
+		</if>
+	</select>
+	
+	<select id="selectAnnounInfoById" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM ANNOUN_INFO WHERE ANNOUN_ID =#{announId}
+	</select>
+	
+	<insert id="insertAnnounInfo" parameterType="map">
+		INSERT INTO ANNOUN_INFO(ANNOUN_TITLE, ANNOUN_CONTENT, ANNOUN_COUNT, INSERT_TIME, UPDATE_TIME, ANNOUN_FROM, USER_ID, ANNOUN_URL, ANNOUN_STATUS)
+		VALUES(#{title}, #{content}, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{from}, #{userId}, #{url}, 1) 
+	</insert>
+	
+	<update id="updateAnnounInfoById" parameterType="map">
+		UPDATE ANNOUN_INFO 
+		<set>
+			UPDATE_TIME=CURRENT_TIMESTAMP,
+			<if test="title != null">
+			ANNOUN_TITLE =#{title},
+			</if>
+			<if test="content != null">
+			ANNOUN_CONTENT =#{content}, 
+			</if>
+			<if test="from != null">
+			ANNOUN_FROM =#{from},
+			</if>
+			<if test="url != null">
+			ANNOUN_URL =#{url},
+			</if>
+			<if test="count != null">
+			ANNOUN_COUNT =#{count},
+			</if>
+		</set>
+		 WHERE ANNOUN_ID =#{announId}
+	</update>
+	
+	<update id="updateCountById" parameterType="map">
+		UPDATE ANNOUN_INFO SET ANNOUN_COUNT =#{count} WHERE ANNOUN_ID =#{announId}
+	</update>
+	
+	<update id="updateStatusById" parameterType="map">
+		UPDATE ANNOUN_INFO SET ANNOUN_STATUS =#{status} WHERE ANNOUN_ID =#{announId}
+	</update>
+	
+	<delete id="deleteAnnounInfoById" parameterType="map">
+		DELETE FROM ANNOUN_INFO WHERE ANNOUN_ID =#{announId}
+	</delete>
+	
+	<select id="selectLastInsertID" resultType="int">
+		SELECT LAST_INSERT_ID()
+	</select>
+	
+	<!-- 根据用户ID查询本月上传通知公告数量 -->
+	<select id="selectAnnounCountByUserId" resultType="map" parameterType="map">
+		SELECT COUNT(1) value FROM ANNOUN_INFO WHERE month(INSERT_TIME)=#{month}
+		<if test="userId != null">
+			AND USER_ID=#{userId}
+		</if>
+	</select>
+	
+	<!-- 根据操作人ID以及当前年份，获取本年度每月上传通知公告数量 -->
+	<select id="selectAnnounCountByAllMonth" resultType="map" parameterType="map">
+		SELECT   
+		sum(case month(INSERT_TIME) when '1' then 1 else 0 end) as a,  
+		sum(case month(INSERT_TIME) when '2' then 1 else 0 end) as b,  
+		sum(case month(INSERT_TIME) when '3' then 1 else 0 end) as c,  
+		sum(case month(INSERT_TIME) when '4' then 1 else 0 end) as d,  
+		sum(case month(INSERT_TIME) when '5' then 1 else 0 end) as e,  
+		sum(case month(INSERT_TIME) when '6' then 1 else 0 end) as f,  
+		sum(case month(INSERT_TIME) when '7' then 1 else 0 end) as g,  
+		sum(case month(INSERT_TIME) when '8' then 1 else 0 end) as h,  
+		sum(case month(INSERT_TIME) when '9' then 1 else 0 end) as i,  
+		sum(case month(INSERT_TIME) when '10' then 1 else 0 end) as j,  
+		sum(case month(INSERT_TIME) when '11' then 1 else 0 end) as k,  
+		sum(case month(INSERT_TIME) when '12' then 1 else 0 end) as l  
+		FROM ANNOUN_INFO  
+		WHERE year(INSERT_TIME)=#{year}
+		<if test="userId != null">
+			AND USER_ID=#{userId}  
+		</if>
+	</select>
+	
+	<!-- 前端页面获取通知公告列表 -->
+	<select id="selectAnnounByList" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM ANNOUN_INFO WHERE ANNOUN_STATUS = 1
+		ORDER BY UPDATE_TIME DESC, ANNOUN_ID DESC LIMIT 0, ${max}
+	</select>
+</mapper>
