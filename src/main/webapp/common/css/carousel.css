@@ -1,0 +1,52 @@
+ .one {
+        margin: 5px auto;
+        height: 160px;
+        width: 1000px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .one ul {
+        height: 160px;
+        width: 100000px;
+        position: absolute;
+        left: 0;
+    }
+    /*ul width的宽不能过小*/
+
+    .one ul li {
+        display: block;
+        float: left;
+        margin: 5px;
+        height: 150px;
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .one ul li a {
+        display: inline-block;
+        height: 150px;
+    }
+
+    .one ul li img {
+        border-radius: 5px;
+        display: block;
+    }
+
+    .one ul li a span {
+        height: 0;
+        display: block;
+        background: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        bottom: 0;
+        color: #fff;
+        font-size: 0px;
+    }
+
+    .one ul li a:hover span {
+        height: 150px;
+        line-height: 150px;
+        font-size: 20px;
+        text-align: center;
+        transition: all 0.7s;
+    }

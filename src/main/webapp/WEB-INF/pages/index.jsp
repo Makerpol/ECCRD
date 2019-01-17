@@ -1,6 +1,6 @@
 <%@page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div style="width: 100%;height: 1000px;background-color: azure;">
+<div style="width: 100%;height: 1200px;background-color: azure;">
 <div style="width: 80%;float: left;">
 <div style="margin-top: 5px;position: relative;z-index: 1;">
 	<div class="col-md-4 cl" style="width:100%;background-color: gainsboro;float:left;">
@@ -143,8 +143,64 @@
 	</div>
 </div>
 </div>
+<div style="width: 1000px;margin-top: 15px;float: left;">
+	<div class="div-title" style="background-color: #044e77;width:200px;height: 30px;">
+		<div style="float: left;margin-left: 15px; "><a style="color: white;text-align:center;line-height: 30px;" href="#">优先数字出版期刊</a></div>
+	</div>
+	<div class="one">
+		<ul>
+		<c:forEach items="${clList2 }" var="l">
+			<li><a href="${path}${l.CL_URL }"><img style="width:120px;height:150px;" src="${path}${l.FILE_URL }" alt=""><span style="width: 240px;">${l.CL_TITLE }</span></a></li>
+		</c:forEach>
+       </ul>
+	</div>
 </div>
-	<div style="float: right;background-color: bisque;width: 200px;height: 100%;">
-		<div class="main" style="border: 1px solid #bed4e2;padding: 20px 0 20px 12px;width: 182px;height:200px;"></div>
+<script type="text/javascript">
+function Rin($Box, v) { //$Box移动的对象，v对象移动的速率
+    var $Box_ul = $Box.find("ul"),
+        $Box_li = $Box_ul.find("li"),
+        $Box_li_span = $Box_li.find("span"),
+        left = 0,
+        s = 0,
+        timer; //定时器
+
+    $Box_li.each(function(index) {
+        $($Box_li_span[index]).width($(this).width()); //hover
+        s += $(this).outerWidth(true); //即要滚动的长度
+    })
+
+    window.requestAnimationFrame = window.requestAnimationFrame || function(Tmove) { return setTimeout(Tmove, 1000 / 60) };
+    window.cancelAnimationFrame = window.cancelAnimationFrame || clearTimeout;
+
+    if (s >= $Box.width()) { //如果滚动长度超出Box长度即开始滚动，没有的话就不执行滚动
+        $Box_li.clone(true).appendTo($Box_ul);
+        Tmove();
+
+        function Tmove() {
+            //运动是移动left  从0到-s;（个人习惯往左滚）
+            left -= v;
+            if (left <= -s) { left = 0;
+                $Box_ul.css("left", left) } else { $Box_ul.css("left", left) }
+            timer = requestAnimationFrame(Tmove);
+        }
+        $Box_ul.hover(function() { cancelAnimationFrame(timer) }, function() { Tmove() })
+    }
+}
+
+$(function(){
+	var box0 = $(".one"),
+	v0 = 1.5; //这里添加滚动的对象和其速率
+	v1 = 1;
+ 	Rin(box0, v0);
+})
+</script>
+</div>
+	<div style="float: right;width: 200px;height: 100%;">
+		<div class="main" style="background-color: #64b6e5;text-align: center;border: 1px solid #bed4e2; width: 182px;height:200px;">
+			<h3>宗旨</h3>
+			<h4>独特的视角</h4>
+			<h4>独立的研究</h4>
+			<h4>促进欧中可持续发展</h4>
+		</div>
 	</div>
 </div>

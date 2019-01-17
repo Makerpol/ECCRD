@@ -22,6 +22,7 @@ request.setAttribute("path", BaseAction.getBaseUrl());%>
 <link rel="stylesheet" href="${path}/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="${path}/common/css/index.css"/>
 <link rel="stylesheet" type="text/css" href="${path}/common/css/title.css"/>
+<link href="${path }/common/css/carousel.css" rel="stylesheet"/>
 <script src="${path}/common/js/jquery.min.js"></script>
 <!-- jquery -->
 <script type="text/javascript" src="${path}/common/js/jquery.min.js"></script>

@@ -68,6 +68,10 @@ public class IndexAction extends BaseAction {
 		// 加载轮播
 		List<Map<String, Object>> clList = clInfoService.selectClInfoByType(param);
 		request.setAttribute("clList", clList);
+		param.clear();
+		param.put("type", "2");
+		List<Map<String, Object>> clList2 = clInfoService.selectClInfoByType(param);
+		request.setAttribute("clList2", clList2);
 		// 加载文章信息
 		this.getCntList(param);
 		// 加载公告
