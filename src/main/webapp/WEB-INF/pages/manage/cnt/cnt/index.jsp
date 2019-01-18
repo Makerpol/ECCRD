@@ -60,13 +60,13 @@
 		</select>
 	</div>
 	</td>
-	<td align="right">类型：</td><td>
+	<!-- <td align="right">类型：</td><td>
 	<div class="layui-input-block" style="width:200px;margin-left:0px;">
 		<select name="type" lay-filter="type" id="type">
 			<option value="">全部</option>
 		</select>
 	</div>
-	</td>
+	</td> -->
 	<td align="right">操作人：</td><td>
 	<div class="layui-input-block" style="width:200px;margin-left:0px;">
 	<input name="user" placeholder="用户名" autocomplete="off" class="layui-input" type="text">

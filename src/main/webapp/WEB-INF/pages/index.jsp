@@ -1,8 +1,8 @@
 <%@page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<div style="width: 100%;height: 1200px;background-color: azure;">
+<div style="width: 100%;height: 1500px;background-color: azure;margin-top: 5px;">
 <div style="width: 80%;float: left;">
-<div style="margin-top: 5px;position: relative;z-index: 1;">
+<div style="margin-top: 10px;position: relative;z-index: 1;">
 	<div class="col-md-4 cl" style="width:100%;background-color: gainsboro;float:left;">
 		<div id="carousel-home" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators" style="bottom:0px;">
@@ -143,9 +143,20 @@
 	</div>
 </div>
 </div>
+<div class="col-md-4 tab" style="margin-top: 10px;margin-left: 5px;border: 1px solid #F0F0F0;width:405px;">
+<div class="tab-model">
+	<ol id="list3">
+		<li class="active" value="9"><a href='${path }/cnt/list.shtml?model=8&type=9&page=1'>视频</a></li>
+	</ol>
+	<a class="more" href="#" onclick="javascript:showTabModelList3()">more</a>
+	<div class="tab-body">
+		
+	</div>
+</div>
+</div>
 <div style="width: 1000px;margin-top: 15px;float: left;">
 	<div class="div-title" style="background-color: #044e77;width:200px;height: 30px;">
-		<div style="float: left;margin-left: 15px; "><a style="color: white;text-align:center;line-height: 30px;" href="#">优先数字出版期刊</a></div>
+		<div style="float: left;margin-left: 15px; "><a style="color: white;text-align:center;line-height: 30px;" href="#">系列项目</a></div>
 	</div>
 	<div class="one">
 		<ul>
@@ -196,11 +207,63 @@ $(function(){
 </script>
 </div>
 	<div style="float: right;width: 200px;height: 100%;">
-		<div class="main" style="background-color: #64b6e5;text-align: center;border: 1px solid #bed4e2; width: 182px;height:200px;">
-			<h3>宗旨</h3>
-			<h4>独特的视角</h4>
-			<h4>独立的研究</h4>
-			<h4>促进欧中可持续发展</h4>
+		<div class="main" style="text-align: center;border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
+			<img style="width: 182px;height:200px;" calt="" src="${path}/common/images/zz_CN.JPG">
+		</div>
+		
+		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;">阿玛丽杜专栏</p>
+			<div >
+				<ul style="list-style: none;margin-left: -30px;">
+					<c:forEach items="${list11 }" var="l">
+					<li>
+					<div style="width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+						<a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_TYPE}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a>
+					</div>
+					</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</div>
+		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;">李成贵专栏</p>
+			<div >
+				<ul style="list-style: none;margin-left: -30px;">
+					<c:forEach items="${list11 }" var="l">
+					<li>
+					<div style="width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+						<a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_TYPE}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a>
+					</div>
+					</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</div>
+		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;">过往荣誉</p>
+			<div >
+				<ul style="list-style: none;margin-left: -30px;">
+					<c:forEach items="${list11 }" var="l">
+					<li>
+					<div style="width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+						<a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_TYPE}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a>
+					</div>
+					</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</div>
+		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;">友情链接</p>
+			<div >
+				<ul style="list-style: none;margin-left: -30px;">
+					<c:forEach items="${links }" var="l">
+						<div class="link">
+							<a style="display: block;text-align: initial;width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" target="_blank" href="${l.LINK_URL }">${l.LINK_TITLE }</a>
+						</div>
+					</c:forEach>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>

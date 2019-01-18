@@ -63,7 +63,7 @@
 				
 </div>
 		
-<c:import url="/link.do"></c:import>
+<%-- <c:import url="/link.do"></c:import> --%>
 <c:import url="/bottom.do"></c:import>
 <script type="text/javascript">
 function toPage(page) {

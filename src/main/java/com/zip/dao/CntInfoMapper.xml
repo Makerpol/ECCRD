@@ -48,7 +48,7 @@
 	
 	<insert id="insertCntInfo" parameterType="map">
 		INSERT INTO CNT_INFO (CNT_TITLE, CNT_MODEL, CNT_TYPE, CNT_CONTENT, CNT_COUNT, INSERT_TIME, CNT_FROM, CNT_URL, USER_ID, CNT_STATUS, UPDATE_TIME) 
-		VALUES (#{title}, #{model}, #{type}, #{content}, 0, CURRENT_TIMESTAMP, #{from}, #{url}, #{userId}, 1, CURRENT_TIMESTAMP)
+		VALUES (#{title}, #{model}, null, #{content}, 0, CURRENT_TIMESTAMP, #{from}, #{url}, #{userId}, 1, CURRENT_TIMESTAMP)
 	</insert>
 	
 	<update id="updateStatusById" parameterType="map">

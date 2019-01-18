@@ -81,6 +81,9 @@ public class IndexAction extends BaseAction {
 		// 加载PDF
 		param.clear();
 		request.setAttribute("pdf", pdfInfoService.selectPdfInfoByList(param));
+		// 友情链接
+		param.clear();
+		request.setAttribute("links", linkInfoService.selectLinkInfoBySearch(param));
 		return "/index.jsp";
 	}
 	

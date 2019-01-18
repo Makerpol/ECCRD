@@ -82,9 +82,9 @@ public class CntMgrAction extends BaseAction {
 		if (SysUtil.isNull(param.get("model")) || !SysUtil.isNum(param.get("model"))) {
 			return JsonUtil.getFailJson("模块不能为空");
 		}
-		if (SysUtil.isNull(param.get("type")) || !SysUtil.isNum(param.get("type"))) {
+		/*if (SysUtil.isNull(param.get("type")) || !SysUtil.isNum(param.get("type"))) {
 			return JsonUtil.getFailJson("类型不能为空");
-		}
+		}*/
 		if (SysUtil.isNull(param.get("content"))) {
 			return JsonUtil.getFailJson("内容不能为空");
 		}
