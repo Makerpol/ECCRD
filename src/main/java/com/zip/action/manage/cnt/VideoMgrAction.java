@@ -91,6 +91,9 @@ public class VideoMgrAction extends BaseAction{
 		if(SysUtil.isNull(param.get("title"))) {
 			return JsonUtil.getFailJson("标题不能为空！");
 		}
+		if(!SysUtil.isNull(param.get("image"))){
+			param.put("image", param.get("image").split(",")[0]);
+		}
 		
 		videoInfoService.updateVideoInfoById(param);
 		return JsonUtil.getSucJson();

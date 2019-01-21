@@ -87,10 +87,8 @@
 	<table id="baseTable" lay-filter="baseTable">
 	<thead>
 	<th lay-data="{field:'VIDEO_ID',width:80,sort:true,fixed:'left'}">ID</th>
-	<th lay-data="{field:'VIDEO_IMAGE',width:320,templet:'#image'}">封面图片</th> 
 	<th lay-data="{field:'VIDEO_TITLE',width:700,sort:true,fixed:'left'}">标题</th>
-	<th lay-data="{field:'USER_ID',width:110,templet:'#userId'}">操作人</th>
-	<th lay-data="{field:'VIDEO_TYPE',width:110,sort:true,templet:'#typeDiv'}">类型</th>
+	<th lay-data="{field:'VIDEO_IMAGE',width:320,templet:'#image'}">封面图片</th> 
 	<th lay-data="{field:'INSERT_TIME',width:110,sort:true,templet:'#insertTime'}">添加时间</th>
 	<th lay-data="{field:'UPDATE_TIME',width:110,sort:true,templet:'#updateTime'}">更新时间</th>
 	<th lay-data="{field:'VIDEO_STATUS',width:90,sort:true,templet:'#status'}">状态</th>
@@ -99,9 +97,7 @@
 	</table>
 	
 	<script type="text/javascript" id="image">
-	{{# if (d.VIDEO_PATH) { }}
-		<img src="${path}{{d.VIDEO_IMAGE_PATH}}" style="width:100px;" onclick="showPhoto({{d.VIDEO_ID}},'${path}{{d.VIDEO_IMAGE_PATH}}')" />
-	{{# } }}
+	<img src="${path}{{d.VIDEO_IMAGE_PATH}}" style="width:100px;" onclick="showPhoto({{d.VIDEO_ID}},'${path}{{d.VIDEO_IMAGE_PATH}}')" />
 	</script>
 	
 	<script type="text/javascript" id="typeDiv">

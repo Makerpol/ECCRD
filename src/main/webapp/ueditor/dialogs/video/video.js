@@ -735,6 +735,7 @@
                         json = utils.str2json(responseText);
                     if (json.state == 'SUCCESS') {
                         uploadVideoList.push({
+                        	"id": json.id,
                             'url': json.url,
                             'type': json.type,
                             'original':json.original
