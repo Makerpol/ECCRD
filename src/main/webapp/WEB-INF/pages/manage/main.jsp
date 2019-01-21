@@ -8,7 +8,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>河南省《创新科技》杂志社</title>
+		<title>欧中发展研究中心</title>
 		<jsp:include page="/common/public.jsp"/>
 
 		<link rel="stylesheet" href="${path }/layui/css/layui.css" media="all" />
@@ -23,7 +23,7 @@
 				<div class="layui-main">
 					<div class="admin-login-box">
 						<a class="logo" style="left: 0;" >
-							<span style="font-size: 18px;">河南省《创新科技》杂志社</span>
+							<span style="font-size: 18px;">欧中发展研究中心</span>
 						</a>
 						<div class="admin-side-toggle" title="隐藏或展示菜单栏">
 							<i class="fa fa-bars" aria-hidden="true"></i>

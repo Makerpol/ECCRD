@@ -291,6 +291,7 @@
             var file = uploadVideoList[key];
             videoObjs.push({
                 url: uploadDir + file.url,
+                id:file.id,
                 width:width,
                 height:height,
                 align:align
@@ -304,6 +305,7 @@
         } else {
             editor.execCommand('insertvideo', videoObjs, 'upload');
         }
+        editor.fireEvent("afterUpvideo", videoObjs);
     }
 
     /*初始化上传标签*/

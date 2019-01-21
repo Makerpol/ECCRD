@@ -226,7 +226,7 @@ $(function(){
 			</div>
 		</div>
 		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
-			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;">李成贵专栏</p>
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;">大师专栏</p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
 					<c:forEach items="${list11 }" var="l">
@@ -240,7 +240,7 @@ $(function(){
 			</div>
 		</div>
 		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
-			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;">过往荣誉</p>
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;">文明探源</p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
 					<c:forEach items="${list11 }" var="l">

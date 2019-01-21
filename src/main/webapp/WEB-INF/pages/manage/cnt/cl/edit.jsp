@@ -66,6 +66,13 @@
     </div>
     </div>
     
+    <div class="layui-inline">
+    <label class="layui-form-label" style="width:170px;">内容简介：</label>
+    <div class="layui-input-inline" style="width:1000px;">
+    <input name="mark" placeholder="" autocomplete="off" class="layui-input" type="text" value="${data.MARK }">
+    </div>
+    </div>
+    
     <div class="layui-form-item">
 	<a class="layui-btn" href="#" onclick="saveData()"><i class="layui-icon">&#xe616;</i> 保存</a>
 	</div>

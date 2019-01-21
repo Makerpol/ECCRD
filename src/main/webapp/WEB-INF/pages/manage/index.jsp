@@ -3,7 +3,7 @@
 <html>
 <head>
 <jsp:include page="/common/public.jsp"/>
-<title>河南省《创新科技》杂志社 - 后台管理系统</title>
+<title>欧中发展研究中心 - 后台管理系统</title>
 <link href="${path }/common/css/login.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="${path }/layui/css/layui.css" media="all" />
 <link rel="stylesheet" href="${path }/common/css/global.css" media="all">
@@ -17,7 +17,7 @@
       <div class="login">
           <div class="login_logo"><a href="#"><img src="${path }/common/images/login_logo.png" /></a></div>
           <div class="login_name" style="margin-top:40px;">
-               <p>河南省《创新科技》杂志社</p>
+               <p>欧中发展研究中心</p>
           </div>
           <form method="post" action="${path }/sys/login.shtml" class="layui-form" id="loginForm">
 				<div class="layui-form-item">
