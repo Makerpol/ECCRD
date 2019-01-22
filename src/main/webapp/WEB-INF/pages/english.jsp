@@ -4,12 +4,12 @@
 <html>
 <!-- 空白首页，跳转到真实首页 -->
 <head>
-<title>欧中发展研究中心</title>
+<title>EURO-CHINESE CENTRE FOR RESEARCH AND DEVELOPMENT</title>
 <jsp:include page="/common/index.jsp" />
 </head>
 <body>
-<c:import url="/title.do"></c:import>
-<c:import url="/index.do"></c:import>
-<c:import url="/bottom.do"></c:import>
+<c:import url="/title_EN.do"></c:import>
+<c:import url="/index_EN.do"></c:import>
+<c:import url="/bottom_EN.do"></c:import>
 </body>
 </html>

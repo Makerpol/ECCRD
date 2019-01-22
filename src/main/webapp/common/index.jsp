@@ -33,7 +33,7 @@ request.setAttribute("path", BaseAction.getBaseUrl());%>
 <script type="text/javascript" src="${path}/bootstrap/js/bootstrap.min.js" ></script>
 <script type="text/javascript" src="${path}/bootstrap/js/bootstrap-paginator.js" ></script>
 
-<script  type="text/javascript">
+<!-- <script  type="text/javascript">
 function showTabModelList1(model){
 	var type = $(".tab-model .active").attr("value");
 	location.href = '${path }/cnt/list.shtml?model='+model+"&type="+type+"&page=1";
@@ -58,4 +58,4 @@ function showTabModelList3(){
 		location.href = "${path }/cnt/list.shtml?model=13&type=14&page=1";
 	}
 }
-</script>
+</script> -->

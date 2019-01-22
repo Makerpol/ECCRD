@@ -72,20 +72,4 @@
 		SELECT LAST_INSERT_ID()
 	</select>
 	
-	<!-- 前端页面获取PDF列表 -->
-	<select id="selectVideoInfoByList" parameterType="map" resultType="map">
-		<![CDATA[
-		SELECT p1.* FROM PDF_INFO p1 
-		 	inner join 
-		 (SELECT p2.PDF_TYPE, p2.UPDATE_TIME FROM PDF_INFO p2 
-		 	left join PDF_INFO p3
-		 	on p2.PDF_TYPE=p3.PDF_TYPE and p2.UPDATE_TIME<=p3.UPDATE_TIME
-		 	group by p2.PDF_TYPE, P2.UPDATE_TIME
-		 	having count(p3.UPDATE_TIME)<=1
-		 )p4
-		on p1.PDF_TYPE=p4.PDF_TYPE and p1.UPDATE_TIME=p4.UPDATE_TIME
-		order by p1.PDF_TYPE, p1.UPDATE_TIME;
-		]]>
-	</select>
-	
 </mapper>

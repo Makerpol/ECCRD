@@ -3,7 +3,7 @@
 <mapper namespace="com.zip.dao.DictInfoMapper">
 
 	<!-- 公共的字段 -->
-	<sql id="surfaceColumn">DICT_ID, DICT_NAME, DICT_VALUE, DICT_COLUMN, DICT_SORT</sql>
+	<sql id="surfaceColumn">DICT_ID, DICT_NAME, DICT_NAME_EN, DICT_VALUE, DICT_COLUMN, DICT_SORT</sql>
 	
 	<!-- 查询所有的字典信息 -->
 	<select id="selectDictInfo" resultType="map">

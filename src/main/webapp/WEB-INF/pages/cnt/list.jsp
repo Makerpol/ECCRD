@@ -16,14 +16,14 @@
 		<div class="mod_div">
 			<div class="line"></div>
 			<div class="m_title">${model.MT_NAME}</div>
-			<div class="m_body">
+			<%-- <div class="m_body">
 				<ul>
 					<c:forEach items="${types }" var="t">
 					<li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> 
 					<a href="${path }/cnt/list/1.shtml?model=${model.MT_ID	}&type=${t.MT_ID}">${t.MT_NAME }</a></li>
 					</c:forEach>
 				</ul>
-			</div>
+			</div> --%>
 		</div>
 	</td>
 	<td style="padding-left: 10px;" valign="top">
@@ -33,7 +33,7 @@
 			<div class="m_body">
 				<ul class="m_body_ul">
 				<c:forEach items="${list }" var="l">
-				<li><div class="left"><a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_TYPE}/${l.CNT_ID}.shtml" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right">${l.UPDATE_TIME_SIMPLE }</div></li>
+				<li><div class="left"><a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right">${l.UPDATE_TIME_SIMPLE }</div></li>
 				</c:forEach>
 				</ul>
 			</div>
@@ -56,7 +56,7 @@
 <c:import url="/bottom.do"></c:import>
 <script type="text/javascript">
 function toPage(page) {
-	window.location.href="${path }/cnt/list/"+page+".shtml?model=${model.MT_ID	}&type=${t.MT_ID}";
+	window.location.href="${path }/cnt/list/"+page+".shtml?model=${model.MT_ID	}";
 }
 </script>
 </body>

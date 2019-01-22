@@ -7,18 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.google.common.collect.Maps;
-import com.zip.service.AnnounInfoService;
 import com.zip.service.ClInfoService;
 import com.zip.service.CntInfoService;
 import com.zip.service.LinkInfoService;
 import com.zip.service.MtInfoService;
-import com.zip.service.PdfInfoService;
 import com.zip.service.VideoInfoService;
 import com.zip.util.DictUtil;
 
 @Controller
-public class IndexAction extends BaseAction {
+public class EnglishAction extends BaseAction{
 	
 	@Autowired private ClInfoService clInfoService;
 	@Autowired private CntInfoService cntInfoService;
@@ -26,31 +23,31 @@ public class IndexAction extends BaseAction {
 	@Autowired private MtInfoService mtInfoService;
 	@Autowired private VideoInfoService videoInfoService;
 
-	@RequestMapping("title")
+	@RequestMapping("title_EN")
 	public String title() {
 		//获取ECCRD子栏目信息
 		request.setAttribute("eccrd", DictUtil.get("INST_TYPE"));
-		return "/title.jsp";
+		return "/title_EN.jsp";
 	}
 	
-	@RequestMapping("contact")
+	@RequestMapping("contact_EN")
 	public String contact() {
-		return "/contact.jsp";
+		return "/contact_EN.jsp";
 	}
 	
-	@RequestMapping("link")
+	@RequestMapping("link_EN")
 	public String link() {
 		Map<String, String> param = getParameterMap();
 		request.setAttribute("links", linkInfoService.selectLinkInfoBySearch(param));
-		return "/link.jsp";
+		return "/link_EN.jsp";
 	}
 	
-	@RequestMapping("bottom")
+	@RequestMapping("bottom_EN")
 	public String bottom() {
-		return "/bottom.jsp";
+		return "/bottom_EN.jsp";
 	}
 	
-	@RequestMapping("index")
+	@RequestMapping("index_EN")
 	public String index() {
 		Map<String, String> param = getParameterMap();
 		// 首页轮播
@@ -73,7 +70,7 @@ public class IndexAction extends BaseAction {
 		// 友情链接
 		param.clear();
 		request.setAttribute("links", linkInfoService.selectLinkInfoBySearch(param));
-		return "/index.jsp";
+		return "/index_EN.jsp";
 	}
 	
 	/**
@@ -98,5 +95,10 @@ public class IndexAction extends BaseAction {
 				request.setAttribute("list"+mParam.get("type"), cntInfoService.selectCntByList(mParam));
 			});*/
 		});
+	}
+	
+	@RequestMapping("english")
+	public String english() {
+		return "/english.jsp";
 	}
 }

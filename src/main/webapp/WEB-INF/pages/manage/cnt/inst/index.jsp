@@ -23,11 +23,11 @@
 	<form class="layui-form" method="get" id="queryForm">
 	<table style="width:100%;border-collapse:separate;border-spacing:10px;">
 	
-	<hc:url per="hc.cnt.instMgr.add" roles="admin">
+	<%-- <hc:url per="hc.cnt.instMgr.add" roles="admin">
 	<tr>
 	<td></td><td colspan="7"><a href="javascript:window.parent.addTab('添加简介', '${path }/instMgr/addPage.shtml', '', 'hc.cnt.instMgr.add')" class="layui-btn"><i class="layui-icon">&#xe654;</i> 添加简介</a></td>
 	</tr>
-	</hc:url>
+	</hc:url> --%>
 	
 	<tr>
 	<td align="right" width=100>标题：</td><td align="left" width=230>

@@ -29,22 +29,13 @@ public class CntAction extends BaseAction {
 	public String list() {
 		Map<String, String> param = getParameterMapWithPageInfo();
 		
-		// 防止分页插件计算分页，重新组织获取模块信息的参数
-		Map<String, String> mtParam = Maps.newHashMap();
 		if (SysUtil.isNull(param.get("model"))) {
-			mtParam.put("model", "8");
-		} else {
-			mtParam.put("model", param.get("model"));
-		}
-		request.setAttribute("types", mtInfoService.selectMtInfoByParentId(mtParam));
-		//获取一级栏目信息
-		mtParam.clear();
+			param.put("model", "1");
+		} 
+		
+		Map<String, String> mtParam = Maps.newHashMap();
 		mtParam.put("mtId", param.get("model"));
 		request.setAttribute("model", mtInfoService.selectMtInfoById(mtParam));
-		//获取当前二级栏目信息
-		mtParam.clear();
-		mtParam.put("mtId", param.get("type"));
-		request.setAttribute("type", mtInfoService.selectMtInfoById(mtParam));
 		
 		param.put("status", "1");		// 只取正常的
 		param.put("sort", "UPDATE_TIME");		// 设置排序

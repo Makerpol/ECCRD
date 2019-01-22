@@ -28,6 +28,10 @@ public class VideoInfoService {
 		return videoInfoMapper.selectLastInsertID();
 	}
 	
+	public int selectLastInsertID() {
+		return videoInfoMapper.selectLastInsertID();
+	}
+	
 	public void updateVideoInfoById(Map<String, String> param) {
 		videoInfoMapper.updateVideoInfoById(param);
 	}
@@ -38,9 +42,5 @@ public class VideoInfoService {
 	
 	public List<Map<String, Object>> selectVideoInfoByType(Map<String, String> param){
 		return videoInfoMapper.selectVideoInfoByType(param);
-	}
-	
-	public List<Map<String, Object>> selectVideoInfoByList(Map<String, String> param){
-		return videoInfoMapper.selectVideoInfoByList(param);
 	}
 }

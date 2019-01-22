@@ -22,6 +22,13 @@ a {
 	/* margin-left: -50px; */
 	background-size: 100%;
 }
+.topEN {
+	background: url(../images/1_EN.jpg) no-repeat 50% 60%;
+	height: 200px;
+	width: 1030px;
+	/* margin-left: -50px; */
+	background-size: 100%;
+}
 .title {
 	background: url(../images/navC.jpg) repeat-x left top;
 	background-size: 1060px 100%;
@@ -85,7 +92,7 @@ a {
 .tab-model .more {
 	position: absolute;
 	right: 5px;
-	top: 9px;
+	/* top: 9px; */
 	font-size: 12px;
 	color: gray;
 	text-decoration:none;
@@ -459,7 +466,7 @@ a {
 }
 .cnt_table {
 	width: 1028px;
-	margin-left: -14px;
+	/* margin-left: -14px; */
 	border: 1px solid #F0F0F0;
 }
 .cnt_table .cnt_title {

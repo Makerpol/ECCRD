@@ -40,8 +40,7 @@
     <!-- 单元格 -->
     <div class="layui-form-item">
     <div class="layui-inline">
-    <label class="layui-form-label" style="width:120px;">
-    <span class="layui-badge-dot layui-bg-green" title="必填"></span> <i class="layui-icon">&#xe60d;</i>：</label>
+    <label class="layui-form-label" style="width:170px;">封面图片：</label>
     <div class="layui-input-inline" style="width:320px;">
     <div class="layui-input-block" style="width:200px;margin-left:0px;">
 		<a class="layui-btn layui-btn-primary" href="#" id="selectImg"><i class="layui-icon">&#xe62f;</i> 选择图片</a>

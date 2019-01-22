@@ -51,7 +51,7 @@
 <div class="col-md-4 tab" style="margin-top: 30px;margin-left:0px;border: 1px solid #F0F0F0;width:410px;float:left;">
 	<div class="tab-model">
 		<ol id="list1">
-			<li class="active"><a href='${path }/cnt/list.shtml?page=1'>新闻动态</a></li>
+			<li class="active"><a href='${path }/cnt/list.shtml?page=1'>News</a></li>
 		</ol>
 		<a class="more" href="#" onclick="${path }/cnt/list.shtml?page=1">more</a>
 		<div class="tab-body">
@@ -66,7 +66,7 @@
 <div class="col-md-4 tab" style="margin-top: 30px;margin-left: 5px;border: 1px solid #F0F0F0;width:409px;">
 <div class="tab-model">
 	<ol id="list2">
-		<li class="active"><a href='${path }/cnt/list.shtml?model=2&page=1'>欧中外交</a></li>
+		<li class="active"><a href='${path }/cnt/list.shtml?model=2&page=1'>Diplomatic Research</a></li>
 	</ol>
 	<a class="more" href="#" onclick="${path }/cnt/list.shtml?model=2&page=1">more</a>
 	<div class="tab-body">
@@ -115,7 +115,7 @@
 <div class="col-md-4 tab" style="margin-top: 10px;margin-left: 5px;border: 1px solid #F0F0F0;width:405px;">
 <div class="tab-model">
 	<ol id="video">
-		<li class="active"><a href='${path }/video/list.shtml?page=1'>视频</a></li>
+		<li class="active"><a href='${path }/video/list.shtml?page=1'>Videos</a></li>
 	</ol>
 	<a class="more" href="#" onclick="${path }/video/list.shtml?page=1">more</a>
 	<div class="tab-body">
@@ -217,7 +217,7 @@ $(function(){
 		</div>
 		
 		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
-			<p style="background-color: #1872a7;text-align: center;font-size: 16px;"><a style="color:white;" href="${path }/cnt/list.shtml?model=7&page=1">阿玛丽杜专栏</a></p>
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;"><a style="color:white;" href="${path }/cnt/list.shtml?model=7&page=1">Amalia Column</a></p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
 					<c:forEach items="${list7 }" var="l">
@@ -231,7 +231,7 @@ $(function(){
 			</div>
 		</div>
 		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
-			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;"><a style="color:white;" href="${path }/cnt/list.shtml?model=8&page=1">大师专栏</a></p>
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;"><a style="color:white;" href="${path }/cnt/list.shtml?model=8&page=1">Special Column</a></p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
 					<c:forEach items="${list8 }" var="l">
@@ -245,7 +245,7 @@ $(function(){
 			</div>
 		</div>
 		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
-			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;"><a style="color:white;" href="${path }/cnt/list.shtml?model=9&page=1">文明探源</a></p>
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;"><a style="color:white;" href="${path }/cnt/list.shtml?model=9&page=1">Grasp of civilization</a></p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
 					<c:forEach items="${list9 }" var="l">

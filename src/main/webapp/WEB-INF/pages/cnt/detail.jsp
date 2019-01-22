@@ -9,7 +9,7 @@
 </head>
 <body>
 <c:import url="/title.do"></c:import>
-<table class="cnt_table" style="border: 0px;height: 30px;">
+<table class="cnt_table" style="border: 0px;height: 30px;margin-left: unset;">
 			<tr>
 				<td><ol class="breadcrumb">
 					<li><a href="${path }/">首页</a></li>
@@ -19,7 +19,7 @@
 				</ol></td>
 			</tr>
 		</table>
-		<table class="cnt_table">
+		<table class="cnt_table" >
 			<tr>
 				<td class="cnt_title" style="width: 100%;" valign="top" align="center">
 					${data.CNT_TITLE }
