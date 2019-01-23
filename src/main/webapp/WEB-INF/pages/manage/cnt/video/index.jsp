@@ -30,7 +30,7 @@
 	</hc:url>
 	
 	<tr>
-	<td align="right" width=100>标题：</td><td align="left" width=230>
+	<td align="right" width=100>中文标题：</td><td align="left" width=230>
 	<input name="title" placeholder="" autocomplete="off" class="layui-input" type="text"></td>
 	<%-- <td align="right" width=100>类型：</td><td width=230>
 	<div class="layui-input-block" style="width:200px;margin-left:0px;">
@@ -87,7 +87,8 @@
 	<table id="baseTable" lay-filter="baseTable">
 	<thead>
 	<th lay-data="{field:'VIDEO_ID',width:80,sort:true,fixed:'left'}">ID</th>
-	<th lay-data="{field:'VIDEO_TITLE',width:700,sort:true,fixed:'left'}">标题</th>
+	<th lay-data="{field:'VIDEO_TITLE',width:500,sort:true,fixed:'left'}">中文标题</th>
+	<th lay-data="{field:'VIDEO_TITLE_EN',width:500,sort:true}">英文标题</th>
 	<th lay-data="{field:'VIDEO_IMAGE',width:320,templet:'#image'}">封面图片</th> 
 	<th lay-data="{field:'INSERT_TIME',width:110,sort:true,templet:'#insertTime'}">添加时间</th>
 	<th lay-data="{field:'UPDATE_TIME',width:110,sort:true,templet:'#updateTime'}">更新时间</th>

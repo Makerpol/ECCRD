@@ -46,6 +46,14 @@
     </div>
     
     <!-- 单元格 -->
+	<div class="layui-inline">
+    <label class="layui-form-label" style="width:170px;">英文标题：</label>
+    <div class="layui-input-inline" style="width:220px;">
+    <input name="title_EN" placeholder="英文标题" autocomplete="off" class="layui-input" type="text" value="${data.CL_TITLE_EN }">
+    </div>
+    </div>
+    
+    <!-- 单元格 -->
     <div class="layui-inline">
     <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 模块：</label>
     <div class="layui-input-inline" style="width:220px;">
@@ -70,6 +78,12 @@
     <label class="layui-form-label" style="width:170px;">内容简介：</label>
     <div class="layui-input-inline" style="width:1000px;">
     <input name="mark" placeholder="" autocomplete="off" class="layui-input" type="text" value="${data.MARK }">
+    </div>
+    </div>
+    <div class="layui-inline">
+    <label class="layui-form-label" style="width:170px;">英文内容简介：</label>
+    <div class="layui-input-inline" style="width:1000px;">
+    <input name="mark_EN" placeholder="" autocomplete="off" class="layui-input" type="text" value="${data.MARK_EN }">
     </div>
     </div>
     

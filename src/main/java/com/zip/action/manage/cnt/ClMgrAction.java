@@ -38,6 +38,7 @@ public class ClMgrAction extends BaseAction {
 		if (!SysUtil.isNull(param.get("title"))) {
 			param.put("title", URLDecoder.decode(param.get("title"), SysUtil.ENCODE));
 		}
+	
 		return () -> {
 			JSONObject json = new JSONObject();
 			List<Map<String, Object>> list = clInfoService.selectClInfoBySearch(param);

@@ -21,12 +21,45 @@ public class CntAction extends BaseAction {
 
 	@RequestMapping("title")
 	public String title() {
-		request.setAttribute("models", mtInfoService.selectAllParentMt());
+		this.setModels();
 		return "/cnt/title.jsp";
 	}
 	
 	@RequestMapping("list")
 	public String list() {
+		this.getList();
+		return "/cnt/list.jsp";
+	}
+	
+	@RequestMapping("detail")
+	public String detail() {
+		this.edit();
+		return "/cnt/detail.jsp";
+	}
+	
+	@RequestMapping("title_EN")
+	public String titleEN() {
+		this.setModels();
+		return "/cnt/title_EN.jsp";
+	}
+	
+	@RequestMapping("list_EN")
+	public String listEN() {
+		this.getList();
+		return "/cnt/list_EN.jsp";
+	}
+	
+	@RequestMapping("detail_EN")
+	public String detailEN() {
+		this.edit();
+		return "/cnt/detail_EN.jsp";
+	}
+	
+	private void setModels() {
+		request.setAttribute("models", mtInfoService.selectAllParentMt());
+	}
+	
+	private void getList() {
 		Map<String, String> param = getParameterMapWithPageInfo();
 		
 		if (SysUtil.isNull(param.get("model"))) {
@@ -43,11 +76,9 @@ public class CntAction extends BaseAction {
 		request.setAttribute("list", cntInfoService.selectCntBySearch(param));
 		request.setAttribute("currentPage", param.get("page"));
 		request.setAttribute("total", param.get("total"));
-		return "/cnt/list.jsp";
 	}
 	
-	@RequestMapping("detail")
-	public String detail() {
+	private void edit() {
 		Map<String, String> param = getParameterMap();
 		if (!SysUtil.isNull(param.get("id"))) {
 			param.put("cntId", param.get("id"));
@@ -65,6 +96,5 @@ public class CntAction extends BaseAction {
 		}
 		param.put("cntId", map.get("CNT_ID").toString());
 		cntInfoService.updateCountById(param);
-		return "/cnt/detail.jsp";
 	}
 }

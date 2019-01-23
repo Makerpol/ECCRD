@@ -30,7 +30,7 @@
 	</hc:url>
 	
 	<tr>
-	<td align="right" width=100>标题：</td><td align="left" width=230>
+	<td align="right" width=100>中文标题：</td><td align="left" width=230>
 	<input name="title" placeholder="" autocomplete="off" class="layui-input" type="text"></td>
 	<td align="right" width=100>状态：</td><td width=230>
 	<div class="layui-input-block" style="width:200px;margin-left:0px;">
@@ -53,6 +53,8 @@
 	<td></td>
 	</tr>
 	<tr>
+	<td align="right" width=100>英文标题：</td><td align="left" width=230>
+	<input name="title_EN" placeholder="" autocomplete="off" class="layui-input" type="text"></td>
 	<td align="right">栏目：</td><td>
 	<div class="layui-input-block" style="width:200px;margin-left:0px;">
 		<select name="model" lay-filter="model" id="model">
@@ -89,10 +91,10 @@
 	<table id="baseTable" lay-filter="baseTable">
 	<thead>
 	<th lay-data="{field:'CNT_ID',width:80,sort:true,fixed:'left'}">ID</th>
-	<th lay-data="{field:'CNT_TITLE',width:700,sort:true,fixed:'left'}">标题</th>
+	<th lay-data="{field:'CNT_TITLE',width:500,sort:true,fixed:'left'}">中文标题</th>
+	<th lay-data="{field:'CNT_TITLE_EN',width:500,sort:true}">英文标题</th>
 	<th lay-data="{field:'USER_ID',width:110,templet:'#userId'}">操作人</th>
 	<th lay-data="{field:'CNT_MODEL',width:110,sort:true,templet:'#modelDiv'}">栏目</th>
-	<th lay-data="{field:'CNT_TYPE',width:110,sort:true,templet:'#typeDiv'}">类别</th>
 	<th lay-data="{field:'INSERT_TIME',width:110,sort:true,templet:'#insertTime'}">添加时间</th>
 	<th lay-data="{field:'UPDATE_TIME',width:110,sort:true,templet:'#updateTime'}">更新时间</th>
 	<th lay-data="{field:'CNT_COUNT',width:110,sort:true,templet:'#cntCount'}">访问量</th>

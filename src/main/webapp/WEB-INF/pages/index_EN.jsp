@@ -82,7 +82,7 @@
 <div class="col-md-4 tab" style="margin-top: 10px;margin-left: 0px;border: 1px solid #F0F0F0;width:410px;">
 <div class="tab-model">
 	<ol id="list3">
-		<li class="active"><a href='${path }/cnt/list.shtml?model=3&page=1'>人文交流</a></li>
+		<li class="active"><a href='${path }/cnt/list.shtml?model=3&page=1'>Cultural＆Economic</a></li>
 	</ol>
 	<a class="more" href="#" onclick="${path }/cnt/list.shtml?model=3&page=1">more</a>
 	<div class="tab-body">
@@ -98,7 +98,7 @@
 </div>
 
 <div class="col-md-4 tab" style="margin-top: 10px;margin-left: 5px;border: 1px solid #F0F0F0;width:409px;">
-<div class="tab-model">
+<%-- <div class="tab-model">
 	<ol id="list4">
 		<li class="active"><a href='${path }/cnt/list.shtml?model=4&page=1'>经济合作</a></li>
 	</ol>
@@ -107,6 +107,21 @@
 		<ul>
 			<c:forEach items="${list4 }" var="l">
 			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			</c:forEach>
+		</ul>
+	</div>
+</div> --%>
+<div class="tab-model">
+	<ol id="list5">
+		<li class="active"><a href='${path }/cnt/list.shtml?model=5&page=1'>OUTLOOK</a></li>
+	</ol>
+	<a class="more" href="#" onclick="${path }/cnt/list.shtml?model=5&page=1">more</a>
+	<div class="tab-body">
+		<ul>
+			<c:forEach items="${list5 }" var="l" varStatus="idxStatus">
+			<c:if test="${idxStatus.index <= 7 }">
+			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			</c:if>
 			</c:forEach>
 		</ul>
 	</div>
@@ -127,30 +142,15 @@
 </div>
 </div>
 <div class="col-md-4 tab" style="margin-top: 10px;margin-left: 5px;border: 1px solid #F0F0F0;width:405px;">
-<div class="tab-model" style="height: 155px;">
-	<ol id="list5">
-		<li class="active"><a href='${path }/cnt/list.shtml?model=5&page=1'>OUTLOOK</a></li>
-	</ol>
-	<a class="more" href="#" onclick="${path }/cnt/list.shtml?model=5&page=1">more</a>
-	<div class="tab-body" style="height: 115px;">
-		<ul>
-			<c:forEach items="${list5 }" var="l" varStatus="idxStatus">
-			<c:if test="${idxStatus.index <= 3 }">
-			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
-			</c:if>
-			</c:forEach>
-		</ul>
-	</div>
-</div>
-<div class="tab-model" style="height: 155px;margin-top: 10px;">
+<div class="tab-model">
 	<ol id="list6">
-		<li class="active"><a href='${path }/cnt/list.shtml?model=6&page=1'>过往成就</a></li>
+		<li class="active"><a href='${path }/cnt/list.shtml?model=6&page=1'>Past Achievements</a></li>
 	</ol>
 	<a class="more" href="#" onclick="${path }/cnt/list.shtml?model=6&page=1">more</a>
-	<div class="tab-body" style="height: 115px;">
+	<div class="tab-body">
 		<ul>
 			<c:forEach items="${list6 }" var="l" varStatus="idxStatus">
-			<c:if test="${idxStatus.index <= 3 }">
+			<c:if test="${idxStatus.index <= 7 }">
 			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
 			</c:if>
 			</c:forEach>
@@ -161,7 +161,7 @@
 
 <div style="width: 1000px;margin-top: 15px;float: left;">
 	<div class="div-title" style="background-color: #044e77;width:200px;height: 30px;">
-		<div style="float: left;margin-left: 15px; "><a style="color: white;text-align:center;line-height: 30px;" href="#">系列项目</a></div>
+		<div style="float: left;margin-left: 15px; "><a style="color: white;text-align:center;line-height: 30px;" href="#">Projects</a></div>
 	</div>
 	<div class="one" style="margin-left: 1.5%;">
 		<ul>
@@ -259,7 +259,7 @@ $(function(){
 			</div>
 		</div>
 		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
-			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;">友情链接</p>
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;">Links</p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
 					<c:forEach items="${links }" var="l" varStatus="idxStatus">

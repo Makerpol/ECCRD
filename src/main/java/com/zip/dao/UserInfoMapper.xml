@@ -3,7 +3,7 @@
 <mapper namespace="com.zip.dao.UserInfoMapper">
 
 	<!-- 公共的字段 -->
-	<sql id="surfaceColumn">USER_ID, USER_NAME, USER_PASS, USER_STATUS, USER_NOTE, F_ROLE_NAME(USER_ID) ROLE_NAME,  
+	<sql id="surfaceColumn">USER_ID, USER_NAME, USER_NAME_EN, USER_PASS, USER_STATUS, USER_NOTE, F_ROLE_NAME(USER_ID) ROLE_NAME,  
 	DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE, CERT_SN, F_ROLE_ID(USER_ID) ROLE_ID, 
 	DATE_FORMAT(LAST_LOGIN_TIME, '%Y-%m-%d %T') LAST_LOGIN_TIME_FULL</sql>
 	
@@ -29,6 +29,9 @@
 			USER_NAME &lt;&gt; 'admin'
 			<if test="userName != null">
 			AND USER_NAME LIKE CONCAT('%', #{userName}, '%')
+			</if>
+			<if test="userName_EN != null">
+			AND USER_NAME_EN LIKE CONCAT('%', #{userName_EN}, '%')
 			</if>
 			<if test="status != null">
 			AND USER_STATUS=#{status}
@@ -63,8 +66,8 @@
 	</update>
 	
 	<insert id="insertUser" parameterType="map">
-		INSERT INTO USER_INFO (USER_NAME, USER_PASS, USER_STATUS, INSERT_TIME, LAST_LOGIN_TIME, USER_NOTE, CERT_SN) 
-		VALUES (#{userName}, #{userPass}, 0, CURRENT_TIMESTAMP, NULL, #{note}, #{sn})
+		INSERT INTO USER_INFO (USER_NAME, USER_NAME_EN, USER_PASS, USER_STATUS, INSERT_TIME, LAST_LOGIN_TIME, USER_NOTE, CERT_SN) 
+		VALUES (#{userName}, #{userName_EN}, #{userPass}, 0, CURRENT_TIMESTAMP, NULL, #{note}, #{sn})
 	</insert>
 	
 	<select id="selectLastInsertID" resultType="int">

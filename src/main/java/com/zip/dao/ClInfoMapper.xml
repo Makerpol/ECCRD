@@ -3,8 +3,8 @@
 <mapper namespace="com.zip.dao.ClInfoMapper">
 
 	<!-- 公共的字段 -->
-	<sql id="surfaceColumn">CL_ID, CL_TITLE, CL_URL, FILE_ID, F_FILE_URL(FILE_ID) FILE_URL, 
-	CL_TYPE, F_DICT_NAME('CL_TYPE', CL_TYPE) CL_TYPE_NAME, MARK</sql>
+	<sql id="surfaceColumn">CL_ID, CL_TITLE, CL_TITLE_EN, CL_URL, FILE_ID, F_FILE_URL(FILE_ID) FILE_URL, 
+	CL_TYPE, F_DICT_NAME('CL_TYPE', CL_TYPE) CL_TYPE_NAME, MARK, MARK_EN</sql>
 	
 	<!-- 查询轮播 -->
 	<select id="selectClInfoBySearch" resultType="map" parameterType="map">
@@ -15,6 +15,9 @@
 			</if>
 			<if test="title != null">
 			AND CL_TITLE LIKE CONCAT('%', #{title}, '%')
+			</if>
+			<if test="title_EN != null">
+			AND CL_TITLE_EN LIKE CONCAT('%', #{title_EN}, '%')
 			</if>
 			<if test="type != null">
 			AND CL_TYPE =#{type}
@@ -30,7 +33,7 @@
 	</select>
 	
 	<insert id="insertClInfo" parameterType="map">
-		INSERT INTO CL_INFO(CL_TITLE, CL_URL, FILE_ID, CL_TYPE, MARK) VALUES (#{title}, #{url}, #{fileId}, #{type}, #{mark})
+		INSERT INTO CL_INFO(CL_TITLE, CL_TITLE_EN, CL_URL, FILE_ID, CL_TYPE, MARK, MARK_EN) VALUES (#{title}, #{title_EN}, #{url}, #{fileId}, #{type}, #{mark}, #{mark}_EN)
 	</insert>
 	
 	<update id="updateClInfoById" parameterType="map">
@@ -38,6 +41,9 @@
 		<set>
 		<if test="title != null">
 			CL_TITLE=#{title},
+		</if>
+		<if test="title_EN != null">
+			CL_TITLE_EN=#{title_EN},
 		</if>
 		<if test="url != null">
 			CL_URL=#{url},
@@ -50,6 +56,9 @@
 		</if>
 		<if test="mark != null">
 			MARK=#{mark},
+		</if>
+		<if test="mark_EN != null">
+			MARK_EN=#{mark_EN},
 		</if>
 		</set> 
 		WHERE CL_ID =#{clId}

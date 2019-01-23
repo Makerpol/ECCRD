@@ -19,43 +19,35 @@
 	</span>
 	<br><br>
 	
-	<blockquote class="layui-elem-quote">
+	<%-- <blockquote class="layui-elem-quote">
 	<form class="layui-form" method="get" id="queryForm">
 	<table style="width:100%;border-collapse:separate;border-spacing:10px;">
 	
-	<%-- <hc:url per="hc.cnt.instMgr.add" roles="admin">
+	<hc:url per="hc.cnt.instMgr.add" roles="admin">
 	<tr>
 	<td></td><td colspan="7"><a href="javascript:window.parent.addTab('添加简介', '${path }/instMgr/addPage.shtml', '', 'hc.cnt.instMgr.add')" class="layui-btn"><i class="layui-icon">&#xe654;</i> 添加简介</a></td>
 	</tr>
-	</hc:url> --%>
+	</hc:url>
 	
 	<tr>
-	<td align="right" width=100>标题：</td><td align="left" width=230>
+	<td align="right" width=100>中文标题：</td><td align="left" width=230>
 	<input name="title" placeholder="" autocomplete="off" class="layui-input" type="text"></td>
 
-	<td align="right">类型：</td><td>
-	<div class="layui-input-block" style="width:200px;margin-left:0px;">
-		<select name="type" lay-filter="type" id="type">
-			<option value="">全部</option>
-			<c:forEach items="${types }" var="t">
-			<option value="${t.value.DICT_VALUE }">${t.value.DICT_NAME }</option>
-			</c:forEach>
-		</select>
-	</div>
-	</td>
+	<td align="right" width=100>英文标题：</td><td align="left" width=230>
+	<input name="title_EN" placeholder="" autocomplete="off" class="layui-input" type="text"></td>
 	<td align="left" >
 	<a class="layui-btn layui-btn-primary" href="#" onclick="clearForm('queryForm')"><i class="layui-icon">&#x1002;</i> 重置</a>
 	<a class="layui-btn" href="#" onclick="reload(true)"><i class="layui-icon">&#xe615;</i> 搜索</a>
-	</td>
-	</tr>
+	</td></tr>
 	</table>
 	</form>
-	</blockquote>
+	</blockquote> --%>
 	
 	<table id="baseTable" lay-filter="baseTable">
 	<thead>
 	<th lay-data="{field:'INST_ID',width:80,sort:true,fixed:'left'}">ID</th>
-	<th lay-data="{field:'INST_TITLE',width:700,sort:true,fixed:'left'}">标题</th>
+	<th lay-data="{field:'INST_TITLE',width:500,sort:true,fixed:'left'}">中文标题</th>
+	<th lay-data="{field:'INST_TITLE_EN',width:500,sort:true}">英文标题</th>
 	<th lay-data="{field:'USER_ID',width:110,templet:'#userId'}">操作人</th>
 	<th lay-data="{field:'INST_TYPE',width:110,sort:true,templet:'#typeDiv'}">类别</th>
 	<th lay-data="{field:'INSERT_TIME',width:110,sort:true,templet:'#insertTime'}">添加时间</th>

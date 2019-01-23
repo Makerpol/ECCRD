@@ -6,10 +6,10 @@
 <nav>
      <ul>
          <li><a href="${path }/">首&nbsp;&nbsp;&nbsp;&nbsp;页</a></li>
-         <li><a href="${path }/inst/index.shtml?type=1">关于ECCRD</a>
+         <li><a style="height: 34px;" href="${path }/inst/index.shtml?type=1">关于ECCRD</a>
              <ul>
              <c:forEach items="${eccrd }" var="j">
-             	<li><a href="${path }/inst/index.shtml?type=${j.value.DICT_VALUE}">${j.value.DICT_NAME }</a></li>
+             	<li><a style="text-align: center;width: 112px;" href="${path }/inst/index.shtml?type=${j.value.DICT_VALUE}">${j.value.DICT_NAME }</a></li>
              </c:forEach>
              </ul>
          </li>
@@ -22,5 +22,4 @@
          <li><a class="btn" style="background-color: dodgerblue;" href="${path }/english.shtml">English</a></li>
      </ul>
     </nav>
-    
 </div>

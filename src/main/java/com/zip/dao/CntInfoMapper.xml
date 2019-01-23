@@ -3,9 +3,9 @@
 <mapper namespace="com.zip.dao.CntInfoMapper">
 
 	<!-- 公共的字段 -->
-	<sql id="surfaceColumn">CNT_ID, CNT_TITLE, CNT_MODEL, F_MT_NAME(CNT_MODEL) CNT_MODEL_NAME, CNT_TYPE, F_MT_NAME(CNT_TYPE) CNT_TYPE_NAME, 
-	CNT_CONTENT, CNT_COUNT, INSERT_TIME, DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE, UPDATE_TIME, DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d %T') UPDATE_TIME_FULL, 
-	DATE_FORMAT(INSERT_TIME, '%Y-%m-%d %T') INSERT_TIME_FULL, CNT_FROM, CNT_URL, USER_ID, F_USER_NAME(USER_ID) USER_NAME, 
+	<sql id="surfaceColumn">CNT_ID, CNT_TITLE, CNT_TITLE_EN, CNT_MODEL, F_MT_NAME(CNT_MODEL) CNT_MODEL_NAME, CNT_TYPE, F_MT_NAME(CNT_TYPE) CNT_TYPE_NAME, 
+	CNT_CONTENT, CNT_CONTENT_EN, CNT_COUNT, INSERT_TIME, DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE, UPDATE_TIME, DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d %T') UPDATE_TIME_FULL, 
+	DATE_FORMAT(INSERT_TIME, '%Y-%m-%d %T') INSERT_TIME_FULL, CNT_FROM, CNT_URL, USER_ID, F_USER_NAME(USER_ID) USER_NAME,  F_USER_NAME_EN(USER_ID) USER_NAME_EN,
 	DATE_FORMAT(UPDATE_TIME, '%m-%d') UPDATE_TIME_SIMPLE, CNT_STATUS, F_DICT_NAME('CNT_STATUS', CNT_STATUS) CNT_STATUS_NAME, F_DICT_NAME('INST_TYPE', CNT_TYPE) INST_TYPE_NAME</sql>
 	
 	<!-- 查询文本信息 -->
@@ -17,6 +17,9 @@
 			</if>
 			<if test="title != null">
 			AND CNT_TITLE LIKE CONCAT('%', #{title}, '%')
+			</if>
+			<if test="title_EN != null">
+			AND CNT_TITLE_EN LIKE CONCAT('%', #{title_EN}, '%')
 			</if>
 			<if test="status != null">
 			AND CNT_STATUS =#{status}
@@ -47,8 +50,8 @@
 	</select>
 	
 	<insert id="insertCntInfo" parameterType="map">
-		INSERT INTO CNT_INFO (CNT_TITLE, CNT_MODEL, CNT_TYPE, CNT_CONTENT, CNT_COUNT, INSERT_TIME, CNT_FROM, CNT_URL, USER_ID, CNT_STATUS, UPDATE_TIME) 
-		VALUES (#{title}, #{model}, null, #{content}, 0, CURRENT_TIMESTAMP, #{from}, #{url}, #{userId}, 1, CURRENT_TIMESTAMP)
+		INSERT INTO CNT_INFO (CNT_TITLE, CNT_TITLE_EN, CNT_MODEL, CNT_TYPE, CNT_CONTENT, CNT_CONTENT_EN, CNT_COUNT, INSERT_TIME, CNT_FROM, CNT_URL, USER_ID, CNT_STATUS, UPDATE_TIME) 
+		VALUES (#{title}, #{title_EN}, #{model}, null, #{content}, #{content_EN}, 0, CURRENT_TIMESTAMP, #{from}, #{url}, #{userId}, 1, CURRENT_TIMESTAMP)
 	</insert>
 	
 	<update id="updateStatusById" parameterType="map">
@@ -66,6 +69,9 @@
 			<if test="title != null">
 			CNT_TITLE=#{title},
 			</if>
+			<if test="title_EN != null">
+			CNT_TITLE_EN=#{title_EN},
+			</if>
 			<if test="model != null">
 			CNT_MODEL=#{model},
 			</if>
@@ -74,6 +80,9 @@
 			</if>
 			<if test="content != null">
 			CNT_CONTENT=#{content}, 
+			</if>
+			<if test="content_EN != null">
+			CNT_CONTENT_EN=#{content_EN}, 
 			</if>
 			<if test="count">
 			CNT_COUNT=#{count},

@@ -31,11 +31,18 @@
 	
 	<!-- 单元格 -->
 	<div class="layui-inline">
-    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 标题：</label>
+    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 中文标题：</label>
     <div class="layui-input-inline" style="width:220px;">
-    <input name="title" placeholder="标题" autocomplete="off" class="layui-input" type="text" value="${data.INST_TITLE }">
+    <input name="title" placeholder="中文标题" autocomplete="off" class="layui-input" type="text" value="${data.INST_TITLE }">
     </div>
     </div>  
+    
+    <div class="layui-inline">
+    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green"></span> 英文标题：</label>
+    <div class="layui-input-inline" style="width:220px;">
+    <input name="title_EN" placeholder="英文标题" autocomplete="off" class="layui-input" type="text" value="${data.INST_TITLE_EN }">
+    </div>
+    </div> 
     
     <!-- 单元格 -->
     <div class="layui-inline">

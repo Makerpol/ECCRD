@@ -54,7 +54,8 @@
 	
 	<table id="baseTable" lay-filter="baseTable">
 	<thead>
-	<th lay-data="{field:'MT_NAME',width:180,sort:true,fixed:'left',templet:'#mtName'}">栏目名</th>
+	<th lay-data="{field:'MT_NAME',width:180,sort:true,fixed:'left',templet:'#mtName'}">中文栏目名</th>
+	<th lay-data="{field:'MT_NAME_EN',width:180,sort:true,fixed:'left',templet:'#mtNameEN'}">英文栏目名</th>
 	<th lay-data="{field:'MT_PARENT_NAME',width:180,sort:true,fixed:'left'}">父栏目</th>
 	<th lay-data="{field:'MT_NTOTE',width:380}">备注</th>
 	<th lay-data="{field:'opt',width:180,fixed:'right',templet:'#opt'}">操作</th>
@@ -66,6 +67,14 @@
 		<div class="layui-table-cell laytable-cell-2-MT_NAME">{{d.MT_NAME}}</div>
 		{{# } else{}}
 		<div class="layui-table-cell laytable-cell-2-MT_NAME" style="margin-left: 30px;">{{d.MT_NAME}}</div>
+		{{# }}}
+	</script>
+	
+	<script type="text/javascript" id="mtNameEN">
+		{{# if(d.MT_PARENT ==0){}}
+		<div class="layui-table-cell laytable-cell-2-MT_NAME">{{d.MT_NAME_EN}}</div>
+		{{# } else{}}
+		<div class="layui-table-cell laytable-cell-2-MT_NAME" style="margin-left: 30px;">{{d.MT_NAME_EN}}</div>
 		{{# }}}
 	</script>
 	

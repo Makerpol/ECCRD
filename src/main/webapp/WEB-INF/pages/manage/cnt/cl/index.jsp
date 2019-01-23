@@ -32,6 +32,10 @@
 	<tr>
 	<td align="right" width=100>标题：</td><td align="left" width=230>
 	<input name="title" placeholder="" autocomplete="off" class="layui-input" type="text"></td>
+	<td align="right" width=100>英文标题：</td><td align="left" width=230>
+	<input name="title_EN" placeholder="" autocomplete="off" class="layui-input" type="text"></td>
+	</tr>
+	<tr>
 	<td align="right" width=100>类型：</td><td width=230>
 	<div class="layui-input-block" style="width:200px;margin-left:0px;">
 		<select name="type" lay-filter="type" id="type">
@@ -45,8 +49,6 @@
 	<td align="right" width=100>图片ID：</td><td align="left" width=230>
 	<input name="clId" placeholder="" autocomplete="off" class="layui-input" type="text"></td>
 	<td></td>
-	</tr>
-	<tr>
 	<td align="right" colspan="6">
 	<a class="layui-btn layui-btn-primary" href="#" onclick="clearForm('queryForm')"><i class="layui-icon">&#x1002;</i> 重置</a>
 	<a class="layui-btn" href="#" onclick="reload(true)"><i class="layui-icon">&#xe615;</i> 搜索</a>
@@ -59,7 +61,8 @@
 	<table id="baseTable" lay-filter="baseTable">
 	<thead>
 	<th lay-data="{field:'CL_ID',width:80,sort:true,fixed:'left'}">ID</th>
-	<th lay-data="{field:'CL_TITLE',width:700,sort:true,fixed:'left'}">标题</th>
+	<th lay-data="{field:'CL_TITLE',width:450,sort:true,fixed:'left'}">标题</th>
+	<th lay-data="{field:'CL_TITLE_EN',width:450,sort:true,fixed:'left'}">英文标题</th>
 	<th lay-data="{field:'CL_TYPE',width:110,sort:true,templet:'#typeDiv',fixed:'left'}">模块</th>
 	<th lay-data="{field:'FILE_ID',width:135,sort:true,templet:'#fileUrl'}">图片</th>
 	<th lay-data="{field:'CL_URL',width:320,templet:'#url'}">引用连接</th>

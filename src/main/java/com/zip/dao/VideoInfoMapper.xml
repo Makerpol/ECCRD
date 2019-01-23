@@ -3,7 +3,7 @@
 <mapper namespace="com.zip.dao.VideoInfoMapper">
 
 	<!-- 公共的字段 -->
-	<sql id="surfaceColumn">VIDEO_ID, VIDEO_TITLE, FILE_ID, F_FILE_URL(FILE_ID) FILE_URL, VIDEO_TYPE, VIDEO_IMAGE, F_FILE_URL(VIDEO_IMAGE) VIDEO_IMAGE_PATH,
+	<sql id="surfaceColumn">VIDEO_ID, VIDEO_TITLE, VIDEO_TITLE_EN, FILE_ID, F_FILE_URL(FILE_ID) FILE_URL, VIDEO_TYPE, VIDEO_IMAGE, F_FILE_URL(VIDEO_IMAGE) VIDEO_IMAGE_PATH,
 	F_DICT_NAME('VIDEO_TYPE', VIDEO_TYPE) VIDEO_TYPE_NAME, VIDEO_STATUS, F_DICT_NAME("VIDEO_STATUS", VIDEO_STATUS) VIDEO_STATUS_NAME,
 	INSERT_TIME, DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE, UPDATE_TIME, DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d %T') UPDATE_TIME_FULL, 
 	DATE_FORMAT(INSERT_TIME, '%Y-%m-%d %T') INSERT_TIME_FULL,F_USER_NAME(USER_ID) USER_NAME</sql>
@@ -16,6 +16,9 @@
 			</if>
 			<if test="title != null">
 			AND VIDEO_TITLE LIKE CONCAT('%', #{title}, '%')
+			</if>
+			<if test="title_EN != null">
+			AND VIDEO_TITLE_EN LIKE CONCAT('%', #{title_EN}, '%')
 			</if>
 			<if test="type != null">
 			AND VIDEO_TYPE =#{type}
@@ -43,8 +46,8 @@
 	</select>
 
 	<insert id="insertVideoInfo" parameterType="map">
-		INSERT INTO VIDEO_INFO(VIDEO_TITLE, FILE_ID, VIDEO_TYPE, VIDEO_STATUS, INSERT_TIME, UPDATE_TIME, USER_ID, VIDEO_IMAGE) 
-		VALUES(#{title},  #{fileId}, #{type}, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{userId}, #{image})
+		INSERT INTO VIDEO_INFO(VIDEO_TITLE, VIDEO_TITLE_EN, FILE_ID, VIDEO_TYPE, VIDEO_STATUS, INSERT_TIME, UPDATE_TIME, USER_ID, VIDEO_IMAGE) 
+		VALUES(#{title}, #{title_EN}, #{fileId}, #{type}, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{userId}, #{image})
 	</insert>
 	
 	<update id="updateVideoInfoById" parameterType="map">
@@ -52,6 +55,9 @@
 		<set>
 		<if test="title != null">
 			VIDEO_TITLE=#{title},
+		</if>
+		<if test="title_EN != null">
+			VIDEO_TITLE_EN=#{title_EN},
 		</if>
 		<if test="image != null">
 			VIDEO_IMAGE=#{image},

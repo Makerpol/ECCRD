@@ -82,12 +82,12 @@ public class PageTag extends TagSupport {
 		// 首页判断
 		if (page == 1) {
 			sb.append("<li class=\"disabled\">");
-			sb.append("<a >首页</a>");
+			sb.append("<a >First</a>");
 		} else {
 			sb.append("<li>");
 			sb.append("<a href=\"javascript:");
 			sb.append(javascript);
-			sb.append("(1)\">首页</a>");
+			sb.append("(1)\">First</a>");
 		}
 		sb.append("</li>");
 		
@@ -133,12 +133,12 @@ public class PageTag extends TagSupport {
 		if (page >= maxPage) {
 			sb.append("<li class=\"disabled\">");
 			page = maxPage;
-			sb.append("<a >尾页</li>");
+			sb.append("<a >End</li>");
 		} else {
 			sb.append("<li>");
 			sb.append("<a href='javascript:" + javascript + "(");
 			sb.append(maxPage);
-			sb.append(")' >尾页</a>");
+			sb.append(")' >End</a>");
 		}
 		sb.append("</li>");
 //		sb.append("</td><td align=\"right\" style=\"font-size:12px;\">共<font color=red>");

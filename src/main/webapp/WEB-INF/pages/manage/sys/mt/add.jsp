@@ -28,9 +28,13 @@
 	<div class="layui-form-item">
 	
 	<div class="layui-inline" customType="0">
-    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 栏目名：</label>
+    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 中文栏目名：</label>
     <div class="layui-input-inline" style="width:220px;">
     <input name="mtName" placeholder="栏目名" autocomplete="off" class="layui-input" type="text">
+    </div>
+    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 英文栏目名：</label>
+    <div class="layui-input-inline" style="width:220px;">
+    <input name="mtName_EN" placeholder="英文栏目名" autocomplete="off" class="layui-input" type="text">
     </div>
     <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 父栏目：</label>
     <div class="layui-input-inline" style="width:220px;">

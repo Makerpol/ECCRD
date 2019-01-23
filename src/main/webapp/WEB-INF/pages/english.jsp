@@ -4,7 +4,7 @@
 <html>
 <!-- 空白首页，跳转到真实首页 -->
 <head>
-<title>EURO-CHINESE CENTRE FOR RESEARCH AND DEVELOPMENT</title>
+<title>EURO CHINESE CENTRE FOR RESEARCH AND DEVELOPMENT</title>
 <jsp:include page="/common/index.jsp" />
 </head>
 <body>

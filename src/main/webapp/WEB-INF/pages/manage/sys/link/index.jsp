@@ -44,7 +44,8 @@
 	
 	<table id="baseTable" lay-filter="baseTable">
 	<thead>
-	<th lay-data="{field:'LINK_TITLE',width:480,sort:true,fixed:'left'}">链接标题</th>
+	<th lay-data="{field:'LINK_TITLE',width:380,sort:true,fixed:'left'}">链接标题</th>
+	<th lay-data="{field:'LINK_TITLE_EN',width:380,sort:true}">英文链接标题</th>
 	<th lay-data="{field:'LINK_URL',width:660}">地址</th>
 	<th lay-data="{field:'opt',width:233,fixed:'right',templet:'#opt'}">操作</th>
 	</thead>

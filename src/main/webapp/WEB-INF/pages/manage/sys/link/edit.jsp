@@ -34,6 +34,12 @@
     <input name="title" placeholder="链接标题" autocomplete="off" class="layui-input" type="text" value="${data.LINK_TITLE }">
     </div>
     
+    <div class="layui-inline" customType="0">
+    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 英文链接标题：</label>
+    <div class="layui-input-inline" style="width:220px;">
+    <input name="title_EN" placeholder="英文链接标题" autocomplete="off" class="layui-input" type="text" value="${data.LINK_TITLE_EN }">
+    </div>
+    
     <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 地址：</label>
     <div class="layui-input-inline" style="width:220px;">
    	 <input name="url" placeholder="链接地址" autocomplete="off" class="layui-input" type="text" value="${data.LINK_URL }">

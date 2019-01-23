@@ -32,6 +32,10 @@
     <div class="layui-input-inline" style="width:220px;">
     <input name="title" placeholder="链接标题" autocomplete="off" class="layui-input" type="text">
     </div>
+    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 链接标题：</label>
+    <div class="layui-input-inline" style="width:220px;">
+    <input name="title_EN" placeholder="英文链接标题" autocomplete="off" class="layui-input" type="text">
+    </div>
     <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 地址：</label>
     <div class="layui-input-inline" style="width:220px;">
     <input name="url" placeholder="链接地址" autocomplete="off" class="layui-input" type="text">

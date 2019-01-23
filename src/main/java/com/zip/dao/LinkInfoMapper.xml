@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zip.dao.LinkInfoMapper">
 
-	<sql id="surfaceColumn">LINK_ID, LINK_TITLE, LINK_URL</sql>
+	<sql id="surfaceColumn">LINK_ID, LINK_TITLE, LINK_TITLE_EN, LINK_URL</sql>
 	
 	<select id="selectLinkInfoBySearch" parameterType="map" resultType="map">
 		SELECT <include refid="surfaceColumn"/> FROM LINK_INFO
@@ -10,11 +10,14 @@
 			<if test="title != null">
 			AND LINK_TITLE LIKE CONCAT('%', #{title}, '%')
 			</if>
+			<if test="title_EN != null">
+			AND LINK_TITLE_EN LIKE CONCAT('%', #{title_EN}, '%')
+			</if>
 		</where>
 	</select>
 	
 	<insert id="insertLinkInfo" parameterType="map">
-		INSERT INTO LINK_INFO(LINK_TITLE, LINK_URL) VALUES(#{title}, #{url})
+		INSERT INTO LINK_INFO(LINK_TITLE, LINK_TITLE_EN, LINK_URL) VALUES(#{title}, #{title_EN}, #{url})
 	</insert>
 	
 	<update id="updateLinkInfoById" parameterType="map">
@@ -22,6 +25,9 @@
 		<set>
 			<if test="title != null">
 			LINK_TITLE =#{title},
+			</if>
+			<if test="title_EN != null">
+			LINK_TITLE_EN =#{title_EN},
 			</if>
 			<if test="url != null">
 			LINK_URL =#{url},

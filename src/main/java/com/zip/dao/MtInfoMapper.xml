@@ -3,7 +3,7 @@
 <mapper namespace="com.zip.dao.MtInfoMapper">
 
 	<!-- 公共的字段 -->
-	<sql id="surfaceColumn">MT_ID, MT_NAME, MT_PARENT, MT_NTOTE, F_MT_NAME(MT_PARENT) MT_PARENT_NAME</sql>
+	<sql id="surfaceColumn">MT_ID, MT_NAME, MT_NAME_EN, MT_PARENT, MT_NTOTE, F_MT_NAME(MT_PARENT) MT_PARENT_NAME</sql>
 	
 	<!-- 通过检索框参数查询 -->
 	<select id="selectMtInfoBySearch" resultType="map"  parameterType="map">
@@ -11,6 +11,9 @@
 		<where>
 			<if test="mtName != null">
 				AND MT_NAME LIKE CONCAT('%', #{mtName}, '%')
+			</if>
+			<if test="mtName_EN != null">
+				AND MT_NAME_EN LIKE CONCAT('%', #{mtName_EN}, '%')
 			</if>
 			<if test="parent != null">
 				AND MT_PARENT =#{parent}
@@ -36,8 +39,8 @@
 	</select>
 	
 	<insert id="insertMtInfo" parameterType="map">
-		INSERT INTO MT_INFO(MT_NAME, MT_PARENT, MT_NTOTE) 
-		VALUES(#{mtName},#{parent},#{mtNtote})
+		INSERT INTO MT_INFO(MT_NAME, MT_NAME_EN, MT_PARENT, MT_NTOTE) 
+		VALUES(#{mtName},#{mtName_EN},#{parent},#{mtNtote})
 	</insert>
 	
 	<delete id="deleteMtInfoById"  parameterType="map">
@@ -49,6 +52,9 @@
 		<set>
 			<if test="mtName != null">
 				MT_NAME =#{mtName},
+			</if>
+			<if test="mtName_EN != null">
+				MT_NAME_EN =#{mtName_EN},
 			</if>
 			<if test="mparent != null">
 				MT_PARENT =#{parent},

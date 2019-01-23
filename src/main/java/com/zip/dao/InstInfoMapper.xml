@@ -3,7 +3,7 @@
 <mapper namespace="com.zip.dao.InstInfoMapper">
 
 	<!-- 公共的字段 -->
-	<sql id="surfaceColumn">INST_ID, INST_TITLE, INST_TYPE, INST_CONTENT, INST_COUNT, INSERT_TIME, DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE, UPDATE_TIME, DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d %T') UPDATE_TIME_FULL, 
+	<sql id="surfaceColumn">INST_ID, INST_TITLE, INST_TITLE_EN, INST_TYPE, INST_CONTENT, INST_CONTENT_EN, INST_COUNT, INSERT_TIME, DATE_FORMAT(INSERT_TIME, '%Y-%m-%d') INSERT_TIME_SIMPLE, UPDATE_TIME, DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d %T') UPDATE_TIME_FULL, 
 	DATE_FORMAT(INSERT_TIME, '%Y-%m-%d %T') INSERT_TIME_FULL, USER_ID, F_USER_NAME(USER_ID) USER_NAME, 
 	DATE_FORMAT(UPDATE_TIME, '%Y-%m-%d') UPDATE_TIME_SIMPLE, F_DICT_NAME('INST_TYPE', INST_TYPE) INST_TYPE_NAME</sql>
 	
@@ -16,6 +16,9 @@
 			</if>
 			<if test="title != null">
 			AND INST_TITLE LIKE CONCAT('%', #{title}, '%')
+			</if>
+			<if test="title_EN != null">
+			AND INST_TITLE_EN LIKE CONCAT('%', #{title_EN}, '%')
 			</if>
 			<if test="type != null">
 			AND INST_TYPE =#{type}
@@ -40,8 +43,8 @@
 	</select>
 	
 	<insert id="insertInstInfo" parameterType="map">
-		INSERT INTO INST_INFO (INST_TITLE, INST_TYPE, INST_CONTENT, INST_COUNT, INSERT_TIME, USER_ID, UPDATE_TIME) 
-		VALUES (#{title}, #{type}, #{content}, 0, CURRENT_TIMESTAMP, #{userId}, CURRENT_TIMESTAMP)
+		INSERT INTO INST_INFO (INST_TITLE, INST_TITLE_EN, INST_TYPE, INST_CONTENT, INST_CONTENT_EN, INST_COUNT, INSERT_TIME, USER_ID, UPDATE_TIME) 
+		VALUES (#{title}, #{title_EN}, #{type}, #{content}, #{content_EN}, 0, CURRENT_TIMESTAMP, #{userId}, CURRENT_TIMESTAMP)
 	</insert>
 	
 	<select id="selectLastInsertID" resultType="int">
@@ -55,11 +58,17 @@
 			<if test="title != null">
 			INST_TITLE=#{title},
 			</if>
+			<if test="title_EN != null">
+			INST_TITLE_EN=#{title_EN},
+			</if>
 			<if test="type != null">
 			INST_TYPE=#{type},
 			</if>
 			<if test="content != null">
 			INST_CONTENT=#{content}, 
+			</if>
+			<if test="content_EN != null">
+			INST_CONTENT_EN=#{content_EN}, 
 			</if>
 			<if test="count">
 			INST_COUNT=#{count},

@@ -31,9 +31,9 @@
 	
 	<!-- 单元格 -->
 	<div class="layui-inline">
-    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 标题：</label>
+    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 中文标题：</label>
     <div class="layui-input-inline" style="width:220px;">
-    <input name="title" placeholder="标题" autocomplete="off" class="layui-input" type="text" value="">
+    <input name="title" placeholder="中文标题" autocomplete="off" class="layui-input" type="text" value="">
     </div>
     </div>
     
@@ -65,6 +65,13 @@
     </div>
     </div>
     
+    
+    <div class="layui-inline">
+    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 英文标题：</label>
+    <div class="layui-input-inline" style="width:220px;">
+    <input name="title_EN" placeholder="英文标题" autocomplete="off" class="layui-input" type="text" value="">
+    </div>
+    </div>
     <div class="layui-inline">
     <label class="layui-form-label" style="width:170px;">引用连接：</label>
     <div class="layui-input-inline" style="width:220px;">
@@ -76,10 +83,21 @@
 	
 	<div class="layui-form-item layui-form-text">
 	
-    <label class="layui-form-label" style="width:1300px;">文本内容：</label>
+    <label class="layui-form-label" style="width:1300px;">中午内容：</label>
     <div class="layui-input-inline" style="width:1300px;">
     <input type="hidden" id="content"  name="content"/></li>
     <textarea id="ueditorCnt" cols="" rows=""  style="border:0px;padding:0px;width:1300px; height:610px; overflow:hidden;">
+    </textarea>
+    </div>
+	
+	</div>
+	
+	<div class="layui-form-item layui-form-text">
+	
+    <label class="layui-form-label" style="width:1300px;">英文内容：</label>
+    <div class="layui-input-inline" style="width:1300px;">
+    <input type="hidden" id="content_EN"  name="content_EN"/></li>
+    <textarea id="ueditorCnt_EN" cols="" rows=""  style="border:0px;padding:0px;width:1300px; height:610px; overflow:hidden;">
     </textarea>
     </div>
 	
@@ -147,7 +165,9 @@
 			$.messager.alert('消息','内容不能为空','info');
 			return;
 		}
+		var contentEN = UE.getEditor('ueditorCnt_EN').getContent();
 		$('#content').val(content);
+		$('#content_en').val(contentEN);
 		$.ajax({
 			url: $('#mainForm').attr('action'),
 			dataType:'json',
@@ -168,6 +188,11 @@
 	$(function(){
 		loadMt('model', 0);
 		var ue = UE.getEditor('ueditorCnt', {
+			initialFrameWidth: 1300,
+			initialFrameHeight: 500
+		});
+		
+		UE.getEditor('ueditorCnt_EN', {
 			initialFrameWidth: 1300,
 			initialFrameHeight: 500
 		});

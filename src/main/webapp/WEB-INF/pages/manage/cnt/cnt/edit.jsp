@@ -31,7 +31,7 @@
 	
 	<!-- 单元格 -->
 	<div class="layui-inline">
-    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 标题：</label>
+    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 中文标题：</label>
     <div class="layui-input-inline" style="width:220px;">
     <input name="title" placeholder="标题" autocomplete="off" class="layui-input" type="text" value="${data.CNT_TITLE }">
     </div>
@@ -48,7 +48,7 @@
     </div>
     
     <!-- 单元格 -->
-    <div class="layui-inline">
+ <%--    <div class="layui-inline">
     <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 类别：</label>
     <div class="layui-input-inline" style="width:220px;">
     <div class="layui-input-block" style="width:200px;margin-left:0px;" >
@@ -56,12 +56,19 @@
 		</select>
 	</div>
     </div>
-    </div>
+    </div> --%>
     
     <div class="layui-inline">
     <label class="layui-form-label" style="width:170px;">来源：</label>
     <div class="layui-input-inline" style="width:220px;">
     <input name="from" placeholder="" autocomplete="off" class="layui-input" type="text" value="${data.CNT_FROM }">
+    </div>
+    </div>
+    
+    <div class="layui-inline">
+    <label class="layui-form-label" style="width:170px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 英文标题：</label>
+    <div class="layui-input-inline" style="width:220px;">
+    <input name="title_EN" placeholder="标题" autocomplete="off" class="layui-input" type="text" value="${data.CNT_TITLE_EN }">
     </div>
     </div>
     
@@ -76,10 +83,20 @@
 	
 	<div class="layui-form-item layui-form-text">
 	
-    <label class="layui-form-label" style="width:1300px;">文本内容：</label>
+    <label class="layui-form-label" style="width:1300px;">中文内容：</label>
     <div class="layui-input-inline" style="width:1300px;">
     <input type="hidden" id="content"  name="content" value=""/></li>
     <textarea id="ueditorCnt" cols="" rows=""  style="border:0px;padding:0px;width:1300px; height:610px; overflow:hidden;">${data.CNT_CONTENT }</textarea>
+    </div>
+	
+	</div>
+	
+	<div class="layui-form-item layui-form-text">
+	
+    <label class="layui-form-label" style="width:1300px;">英文内容：</label>
+    <div class="layui-input-inline" style="width:1300px;">
+    <input type="hidden" id="content_EN"  name="content_EN" value=""/></li>
+    <textarea id="ueditorCnt_EN" cols="" rows=""  style="border:0px;padding:0px;width:1300px; height:610px; overflow:hidden;">${data.CNT_CONTENT_EN }</textarea>
     </div>
 	
 	</div>
@@ -146,7 +163,9 @@
 			$.messager.alert('消息','内容不能为空','info');
 			return;
 		}
+		var contentEN = UE.getEditor('ueditorCnt_EN').getContent();
 		$('#content').val(content);
+		$('#content_EN').val(contentEN);
 		$.ajax({
 			url: $('#mainForm').attr('action'),
 			dataType:'json',
@@ -167,6 +186,10 @@
 	$(function(){
 		loadMt('model', 0);
 		var ue = UE.getEditor('ueditorCnt', {
+			initialFrameWidth: 1300,
+			initialFrameHeight: 500
+		});
+		UE.getEditor('ueditorCnt_EN', {
 			initialFrameWidth: 1300,
 			initialFrameHeight: 500
 		});
