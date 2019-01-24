@@ -114,7 +114,7 @@
 	<a href="#" onclick="javascript:window.parent.addTab('编辑文本信息 - {{d.VIDEO_TITLE}}', '${path }/videoMgr/editPage.shtml?videoId={{d.VIDEO_ID}}', '', 'hc.cnt.videoMgr.edit_{{d.VIDEO_ID}}')" class="layui-btn layui-btn-xs" title="编辑"><i class="layui-icon">&#xe642;</i></a>
 	</hc:url>
 	<hc:url per="hc.cnt.videoMgr.list" roles="admin">
-	<a href="#" onclick="javascript:showVideo('${path}{{d.FILE_URL}}')" class="layui-btn layui-btn-xs" title="预览" ><i class="layui-icon">&#xe705;</i></a>
+	<a href="#" onclick="javascript:showVideo('${path}{{d.FILE_PATH}}')" class="layui-btn layui-btn-xs" title="预览" ><i class="layui-icon">&#xe705;</i></a>
 	</hc:url>
 	<hc:url per="hc.cnt.videoMgr.del" roles="admin">
 	<a href="#" onclick="javascript:delData({{d.VIDEO_ID}}, '{{d.VIDEO_TITLE}}')" class="layui-btn layui-btn-xs layui-btn-danger" title="删除"><i class="layui-icon">&#xe640;</i></a>
@@ -190,12 +190,14 @@
 	}
 	
 	function showVideo(path){
+		console.log(path);
+		var loadstr='<video  controls="controls" controls="controls" style="width:600px;height:400px;"><source src="'+path+'" type="video/mp4"></source></video>';
 		layer.open({
-			type: 2,
+			type: 1,
 			skin: 'layui-layer-rim', //加上边框
 			maxmin: true,
 			area: ['700px', '500px'], //宽高
-			content: 'http://tzchinaad.com/mp4/1702147940_0.mp4'
+			content: loadstr
 		});
 	}
 	

@@ -16,14 +16,14 @@ a {
 	text-decoration:none;
 }
 .top {
-	background: url(../images/1_CN.jpg) no-repeat 50% 60%;
+	background: url(../images/1_CN.jpg) no-repeat 50% 40%;
 	height: 200px;
 	width: 1030px;
 	/* margin-left: -50px; */
 	background-size: 100%;
 }
 .topEN {
-	background: url(../images/1_EN.jpg) no-repeat 50% 60%;
+	background: url(../images/1_EN.jpg) no-repeat 50% 40%;
 	height: 200px;
 	width: 1030px;
 	/* margin-left: -50px; */
@@ -388,7 +388,7 @@ a {
 .mod_div .m_title {
 	background: url(../images/5_2.png) repeat-x;
 	height: 33px;
-	width: 80px;
+	width: 160px;
 	max-width: 200px;
 	line-height: 30px;
 	color: white;

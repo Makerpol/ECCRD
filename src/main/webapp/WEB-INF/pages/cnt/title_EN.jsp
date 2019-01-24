@@ -7,7 +7,7 @@
 			<th><a href="${path }/">Home Page</a></th>
 			<c:forEach items="${models }" var="m">
 			<td>|</td>
-			<th><a href="${path }/cnt/list/1.shtml?model=${m.MT_ID}">${m.MT_NAME_EN }</a></th>
+			<th><a href="${path }/cnt/listEN/1.shtml?model=${m.MT_ID}">${m.MT_NAME_EN }</a></th>
 			</c:forEach>
 		</tr>
 	</table>

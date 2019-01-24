@@ -29,11 +29,13 @@
 	<td style="padding-left: 10px;" valign="top">
 		<div class="mod_list">
 			<div class="line"></div>
-			<div class="m_title"><c:if test="${type.MT_NAME == null || type.MT_NAME == ''}">全部</c:if><c:if test="${type.MT_NAME != null && type.MT_NAME != ''}">${type.MT_NAME}</c:if></div>
+			<div class="m_title"><c:if test="${type.MT_NAME == null || type.MT_NAME == ''}">All</c:if><c:if test="${type.MT_NAME != null && type.MT_NAME != ''}">${type.MT_NAME}</c:if></div>
 			<div class="m_body">
 				<ul class="m_body_ul">
 				<c:forEach items="${list }" var="l">
-				<li><div class="left"><a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right">${l.UPDATE_TIME_SIMPLE }</div></li>
+				<c:if test="${not empty  l.CNT_TITLE_EN}">
+				<li><div class="left"><a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right">${l.UPDATE_TIME_SIMPLE }</div></li>
+				</c:if>
 				</c:forEach>
 				</ul>
 			</div>
@@ -56,7 +58,7 @@
 <c:import url="/bottom_EN.do"></c:import>
 <script type="text/javascript">
 function toPage(page) {
-	window.location.href="${path }/cnt/list_EN/"+page+".shtml?model=${model.MT_ID	}";
+	window.location.href="${path }/cnt/listEN/"+page+".shtml?model=${model.MT_ID	}";
 }
 </script>
 </body>

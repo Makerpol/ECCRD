@@ -17,9 +17,19 @@ public class InstAction extends BaseAction{
 	
 	@RequestMapping("index")
 	public String index() {
+		this.getData();
+		return "/inst/index.jsp";
+	}
+	
+	@RequestMapping("indexEN")
+	public String indexEN() {
+		this.getData();
+		return "/inst/index_EN.jsp";
+	}
+	
+	private void getData() {
 		Map<String, String> param = getParameterMap();
 		request.setAttribute("types", DictUtil.get("INST_TYPE"));
 		request.setAttribute("list", instInfoService.selectInstBySearch(param));
-		return "/inst/index.jsp";
 	}
 }

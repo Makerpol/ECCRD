@@ -33,7 +33,7 @@
 	</select>
 	
 	<insert id="insertClInfo" parameterType="map">
-		INSERT INTO CL_INFO(CL_TITLE, CL_TITLE_EN, CL_URL, FILE_ID, CL_TYPE, MARK, MARK_EN) VALUES (#{title}, #{title_EN}, #{url}, #{fileId}, #{type}, #{mark}, #{mark}_EN)
+		INSERT INTO CL_INFO(CL_URL, FILE_ID, CL_TYPE) VALUES (#{url}, #{fileId}, #{type})
 	</insert>
 	
 	<update id="updateClInfoById" parameterType="map">

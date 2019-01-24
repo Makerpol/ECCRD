@@ -13,20 +13,23 @@ import com.zip.service.VideoInfoService;
 public class VideoAction extends BaseAction{
 	@Autowired private VideoInfoService videoInfoService;
 	
-	@RequestMapping("title")
-	public String title() {
-		return "/video/title.jsp";
-	}
-	
 	@RequestMapping("list")
 	public String list() {
+		this.getData();
+		return "/video/list.jsp";
+	}
+	
+	@RequestMapping("listEN")
+	public String listEN() {
+		this.getData();
+		return "/video/list_EN.jsp";
+	}
+	
+	private void getData() {
 		Map<String, String> param = getParameterMapWithPageInfo();
-		
 		param.put("sort", "INSERT_TIME");
 		param.put("order", "DESC");
-		
 		request.setAttribute("list", videoInfoService.selectVideoInfoBySearch(param));
 		request.setAttribute("total", param.get("total"));
-		return "/video/list.jsp";
 	}
 }

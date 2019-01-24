@@ -37,19 +37,19 @@ public class CntAction extends BaseAction {
 		return "/cnt/detail.jsp";
 	}
 	
-	@RequestMapping("title_EN")
+	@RequestMapping("titleEN")
 	public String titleEN() {
 		this.setModels();
 		return "/cnt/title_EN.jsp";
 	}
 	
-	@RequestMapping("list_EN")
+	@RequestMapping("listEN")
 	public String listEN() {
 		this.getList();
 		return "/cnt/list_EN.jsp";
 	}
 	
-	@RequestMapping("detail_EN")
+	@RequestMapping("detailEN")
 	public String detailEN() {
 		this.edit();
 		return "/cnt/detail_EN.jsp";

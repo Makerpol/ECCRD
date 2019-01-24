@@ -12,9 +12,9 @@
 <table class="cnt_table" style="border: 0px;height: 30px;margin-left: unset;">
 			<tr>
 				<td><ol class="breadcrumb">
-					<li><a href="${path }/">Home Page</a></li>
-					<li><a href="${path }/cnt/list_EN.shtml?model=${data.CNT_MODEL}">${data.CNT_MODEL_NAME_EN }</a></li>
-					<li class="active">${data.CNT_TITLE }</li>
+					<li><a href="${path }/english.shtml">Home Page</a></li>
+					<li><a href="${path }/cnt/listEN.shtml?model=${data.CNT_MODEL}">${data.CNT_MODEL_NAME_EN }</a></li>
+					<li class="active">${data.CNT_TITLE_EN }</li>
 				</ol></td>
 			</tr>
 		</table>

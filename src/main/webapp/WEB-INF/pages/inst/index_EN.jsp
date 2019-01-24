@@ -19,8 +19,10 @@
 			<div class="m_body">
 				<ul>
 					<c:forEach items="${types }" var="t">
-					<li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> 
-					<a href="${path }/inst/index_EN.shtml?type=${t.value.DICT_VALUE}">${t.value.DICT_NAME_EN }</a></li>
+					<c:if test="${not empty t.value.DICT_NAME_EN }">
+						<li><i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> 
+						<a href="${path }/inst/indexEN.shtml?type=${t.value.DICT_VALUE}">${t.value.DICT_NAME_EN }</a></li>
+					</c:if>
 					</c:forEach>
 				</ul>
 			</div>
