@@ -36,14 +36,14 @@
 				<span class="sr-only">Next</span>
 			</a> -->
 		</div>
-		<script type="text/javascript">
+		<!-- <script type="text/javascript">
 			$(function(){
 				// 永久停止轮播
 		        $('#carousel-home').carousel({
 		    		interval: false
 				})
 			})
-		</script>
+		</script> -->
 	</div>
 </div>
 
