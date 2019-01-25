@@ -18,10 +18,10 @@
 						<p class="cl-txt"><c:if test="${c.CL_URL == null }">${c.CL_TITLE }</c:if><c:if test="${c.CL_URL != null }"><a style="color:white;" target="_blank" href="${c.CL_URL}">${c.CL_TITLE }</a></c:if></p>
 					</div> --%>
 					<div class="txt">
-						<h3 style="text-align: center;width: 250px;height:50px;margin-top: 55px;font-weight: 700;">
-							<a style="text-decoration:none;font-size:18px;width: 250px;height: 50px;color:white;overflow: hidden;display: block;text-overflow: ellipsis;">${c.CL_TITLE }</a>
+						<h3 style="text-align: center;width: 250px;height:60px;margin-top: 40px;font-weight: 700;">
+							<a style="text-decoration:none;font-size:18px;width: 250px;height: 60px;color:white;overflow: hidden;display: block;text-overflow: ellipsis;">${c.CL_TITLE }</a>
 						</h3>
-						<p style="text-indent: 2em;line-height: 22px;word-wrap: break-word;overflow: hidden;width: 214px;"><a style="color:white;text-decoration:none;">${c.MARK}</a></p>
+						<p style="text-indent: 2em;line-height: 22px;word-wrap: break-word;overflow: hidden;width: 254px;"><a style="color:white;text-decoration:none;">${c.MARK}</a></p>
 					</div>
 				</div>
 				</c:forEach>
