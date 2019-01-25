@@ -45,6 +45,10 @@
 		SELECT <include refid="surfaceColumn"/> FROM VIDEO_INFO WHERE VIDEO_ID =#{videoId}
 	</select>
 
+	<select id="selectVideoInfoByList" parameterType="map" resultType="map">
+		SELECT <include refid="surfaceColumn"/> FROM VIDEO_INFO ORDER BY UPDATE_TIME DESC LIMIT 0, ${max}
+	</select>
+
 	<insert id="insertVideoInfo" parameterType="map">
 		INSERT INTO VIDEO_INFO(VIDEO_TITLE, VIDEO_TITLE_EN, FILE_ID, VIDEO_TYPE, VIDEO_STATUS, INSERT_TIME, UPDATE_TIME, USER_ID, VIDEO_IMAGE) 
 		VALUES(#{title}, #{title_EN}, #{fileId}, #{type}, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{userId}, #{image})

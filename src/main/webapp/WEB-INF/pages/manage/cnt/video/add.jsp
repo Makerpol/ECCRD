@@ -24,14 +24,14 @@
 	<div class="layui-inline">
 	<label class="layui-form-label" style="width:120px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 中文标题：</label>
     <div class="layui-input-inline" style="width:220px;">
-		<input name="title" placeholder="中文标题" autocomplete="off" maxlength="9" class="layui-input" type="text">
+		<input name="title" placeholder="中文标题" autocomplete="off" maxlength="100" class="layui-input" type="text">
     </div>
 	</div>
 	
 	<div class="layui-inline">
 	<label class="layui-form-label" style="width:120px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 英文标题：</label>
     <div class="layui-input-inline" style="width:220px;">
-		<input name="title_EN" placeholder="英文标题" autocomplete="off" maxlength="9" class="layui-input" type="text">
+		<input name="title_EN" placeholder="英文标题" autocomplete="off" maxlength="200" class="layui-input" type="text">
     </div>
 	</div>
 	    <%-- <div class="layui-inline">

@@ -43,4 +43,8 @@ public class VideoInfoService {
 	public List<Map<String, Object>> selectVideoInfoByType(Map<String, String> param){
 		return videoInfoMapper.selectVideoInfoByType(param);
 	}
+	
+	public List<Map<String, Object>> selectVideoInfoByList(Map<String, String> param){
+		return videoInfoMapper.selectVideoInfoByList(param);
+	}
 }

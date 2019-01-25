@@ -17,4 +17,6 @@ public interface VideoInfoMapper extends BaseInfoMapper{
 	public List<Map<String, Object>> selectVideoInfoByType(Map<String, String> param);
 	
 	public int selectLastInsertID();
+	
+	public List<Map<String, Object>> selectVideoInfoByList(Map<String, String> param);
 }

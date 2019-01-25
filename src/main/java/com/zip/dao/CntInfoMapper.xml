@@ -114,7 +114,7 @@
 		<if test="type != null">
 		AND CNT_TYPE =#{type}
 		</if>
-		ORDER BY UPDATE_TIME DESC, CNT_ID DESC LIMIT 0, ${max}
+		ORDER BY INSERT_TIME DESC, CNT_ID DESC LIMIT 0, ${max}
 	</select>
 	
 	<!-- 根据操作人Id查询本月各个栏目上传文章数量 -->

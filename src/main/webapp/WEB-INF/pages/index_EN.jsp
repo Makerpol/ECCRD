@@ -19,9 +19,9 @@
 					</div> --%>
 					<div class="txt">
 						<h3 style="text-align: center;width: 250px;height:50px;margin-top: 55px;font-weight: 700;">
-							<a style="text-decoration:none;font-size:18px;width: 250px;height: 50px;color:white;overflow: hidden;display: block;text-overflow: ellipsis;">${c.CL_TITLE }</a>
+							<a style="text-decoration:none;font-size:18px;width: 250px;height: 50px;color:white;overflow: hidden;display: block;text-overflow: ellipsis;">${c.CL_TITLE_EN }</a>
 						</h3>
-						<p style="text-indent: 2em;line-height: 22px;word-wrap: break-word;overflow: hidden;width: 214px;"><a style="color:white;text-decoration:none;">${c.MARK}</a></p>
+						<p style="text-indent: 2em;line-height: 22px;word-wrap: break-word;overflow: hidden;width: 214px;"><a style="color:white;text-decoration:none;">${c.MARK_EN}</a></p>
 					</div>
 				</div>
 				</c:forEach>
@@ -222,16 +222,16 @@ $(function(){
 </script>
 </div>
 	<div style="float: right;width: 200px;height: 100%;">
-		<div class="main" style="text-align: center;border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
-			<img style="width: 182px;height:200px;" calt="" src="${path}/common/images/zz_CN.JPG">
+		<div class="main" style="text-align: center;border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:280px;margin-left: 5px;margin-top: 10px;">
+			<img style="width: 182px;height:280px;" calt="" src="${path}/common/images/zz_EN.JPG">
 		</div>
 		
-		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
+		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:250px;margin-left: 5px;margin-top: 10px;">
 			<p style="background-color: #1872a7;text-align: center;font-size: 16px;"><a style="color:white;" href="${path }/cnt/listEN.shtml?model=7&page=1">Amalia Column</a></p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
 					<c:forEach items="${list7 }" var="l">
-					<c:if test="${idxStatus.index <= 5 }">
+					<c:if test="${idxStatus.index <= 6 }">
 					<c:if test="${not empty  l.CNT_TITLE_EN}">
 					<li>
 					<div style="width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
@@ -244,12 +244,12 @@ $(function(){
 				</ul>
 			</div>
 		</div>
-		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
+		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:250px;margin-left: 5px;margin-top: 10px;">
 			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;"><a style="color:white;" href="${path }/cnt/listEN.shtml?model=8&page=1">Special Column</a></p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
 					<c:forEach items="${list8 }" var="l">
-					<c:if test="${idxStatus.index <= 5 }">
+					<c:if test="${idxStatus.index <= 6 }">
 					<c:if test="${not empty  l.CNT_TITLE_EN}">
 					<li>
 					<div style="width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
@@ -262,12 +262,12 @@ $(function(){
 				</ul>
 			</div>
 		</div>
-		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:200px;margin-left: 5px;margin-top: 10px;">
+		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:250px;margin-left: 5px;margin-top: 10px;">
 			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;"><a style="color:white;" href="${path }/cnt/listEN.shtml?model=9&page=1">Grasp of civilization</a></p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
 					<c:forEach items="${list9 }" var="l">
-					<c:if test="${idxStatus.index <= 5 }">
+					<c:if test="${idxStatus.index <= 6 }">
 					<c:if test="${not empty  l.CNT_TITLE_EN}">
 					<li>
 					<div style="width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
