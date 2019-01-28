@@ -89,7 +89,7 @@ public class IndexAction extends BaseAction {
 			param.put("status", "1");		// 只取正常的
 			param.put("sort", "UPDATE_TIME");		// 设置排序
 			param.put("order", "DESC");
-			request.setAttribute("list"+pMt.get("MT_ID"), cntInfoService.selectCntBySearch(param));
+			request.setAttribute("list"+pMt.get("MT_ID"), cntInfoService.selectCntByList(param));
 			/*//根据父节点获取所有子节点
 			List<Map<String, Object>> list = mtInfoService.selectMtInfoByParentId(param);
 			//遍历子节点，获取文章信息

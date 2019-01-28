@@ -5,7 +5,7 @@
 <div style="margin-top: 10px;position: relative;z-index: 1;">
 	<div class="col-md-4 cl" style="width:100%;background-color: gainsboro;float:left;">
 		<div id="carousel-home" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators" style="bottom:0px;">
+			<ol class="carousel-indicators" style="bottom: -5px;left: 52%;">
 				<c:forEach items="${clList }" var="c" varStatus="st">
 				<li data-target="#carousel-home" data-slide-to="${st.index }" <c:if test="${st.index == 0 }">class="active"</c:if> ></li>
 				</c:forEach>
@@ -36,7 +36,7 @@
 				<span class="sr-only">Next</span>
 			</a> -->
 		</div>
-		<!-- <script type="text/javascript">
+<!-- 		<script type="text/javascript">
 			$(function(){
 				// 永久停止轮播
 		        $('#carousel-home').carousel({
@@ -53,7 +53,7 @@
 		<ol id="list1">
 			<li class="active"><a href='${path }/cnt/listEN.shtml?page=1'>News</a></li>
 		</ol>
-		<a class="more" href="#" onclick="${path }/cnt/listEN.shtml?page=1">more</a>
+		<a class="more" href="${path }/cnt/listEN.shtml?page=1">more</a>
 		<div class="tab-body">
 			<ul>
 				<c:forEach items="${list1 }" var="l">
@@ -70,7 +70,7 @@
 	<ol id="list2">
 		<li class="active"><a href='${path }/cnt/listEN.shtml?model=2&page=1'>Diplomatic Research</a></li>
 	</ol>
-	<a class="more" href="#" onclick="${path }/cnt/listEN.shtml?model=2&page=1">more</a>
+	<a class="more" href="${path }/cnt/listEN.shtml?model=2&page=1">more</a>
 	<div class="tab-body">
 		<ul>
 			<c:forEach items="${list2 }" var="l">
@@ -88,7 +88,7 @@
 	<ol id="list3">
 		<li class="active"><a href='${path }/cnt/listEN.shtml?model=3&page=1'>Cultural＆Economic</a></li>
 	</ol>
-	<a class="more" href="#" onclick="${path }/cnt/listEN.shtml?model=3&page=1">more</a>
+	<a class="more" href="${path }/cnt/listEN.shtml?model=3&page=1">more</a>
 	<div class="tab-body">
 		<ul>
 			<c:forEach items="${list3 }" var="l" varStatus="idxStatus">
@@ -108,7 +108,7 @@
 	<ol id="list4">
 		<li class="active"><a href='${path }/cnt/list.shtml?model=4&page=1'>经济合作</a></li>
 	</ol>
-	<a class="more" href="#" onclick="${path }/cnt/list.shtml?model=4&page=1">more</a>
+	<a class="more" href="${path }/cnt/list.shtml?model=4&page=1">more</a>
 	<div class="tab-body">
 		<ul>
 			<c:forEach items="${list4 }" var="l">
@@ -121,7 +121,7 @@
 	<ol id="list5">
 		<li class="active"><a href='${path }/cnt/listEN.shtml?model=5&page=1'>OUTLOOK</a></li>
 	</ol>
-	<a class="more" href="#" onclick="${path }/cnt/listEN.shtml?model=5&page=1">more</a>
+	<a class="more" href="${path }/cnt/listEN.shtml?model=5&page=1">more</a>
 	<div class="tab-body">
 		<ul>
 			<c:forEach items="${list5 }" var="l" varStatus="idxStatus">
@@ -140,7 +140,7 @@
 	<ol id="video">
 		<li class="active"><a href='${path }/video/listEN.shtml?page=1'>Videos</a></li>
 	</ol>
-	<a class="more" href="#" onclick="${path }/video/listEN.shtml?page=1">more</a>
+	<a class="more" href="${path }/video/listEN.shtml?page=1">more</a>
 	<div class="tab-body">
 		<video controls="controls" controls="controls" style="width:350px;height:250px;margin-left: 5%;">
 			<source src="${path}${video.FILE_URL }" type="video/mp4" />
@@ -154,11 +154,11 @@
 	<ol id="list6">
 		<li class="active"><a href='${path }/cnt/listEN.shtml?model=6&page=1'>Past Achievements</a></li>
 	</ol>
-	<a class="more" href="#" onclick="${path }/cnt/listEN.shtml?model=6&page=1">more</a>
+	<a class="more" href="${path }/cnt/listEN.shtml?model=6&page=1">more</a>
 	<div class="tab-body">
 		<ul>
 			<c:forEach items="${list6 }" var="l" varStatus="idxStatus">
-			<c:if test="${idxStatus.index <= 7 }">
+			<c:if test="${idxStatus.index <= 8 }">
 			<c:if test="${not empty  l.CNT_TITLE_EN}">
 			<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
 			</c:if>
@@ -222,19 +222,19 @@ $(function(){
 </script>
 </div>
 	<div style="float: right;width: 200px;height: 100%;">
-		<div class="main" style="text-align: center;border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:280px;margin-left: 5px;margin-top: 10px;">
-			<img style="width: 182px;height:280px;" calt="" src="${path}/common/images/zz_EN.JPG">
+		<div class="main" style="text-align: center;border-radius: 5px; width: 182px;height:250px;margin-left: 5px;margin-top: 10px;">
+			<img style="width: 182px;height:250px;" calt="" src="${path}/common/images/zz_EN.JPG">
 		</div>
 		
 		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:250px;margin-left: 5px;margin-top: 10px;">
 			<p style="background-color: #1872a7;text-align: center;font-size: 16px;"><a style="color:white;" href="${path }/cnt/listEN.shtml?model=7&page=1">Amalia Column</a></p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
-					<c:forEach items="${list7 }" var="l">
-					<c:if test="${idxStatus.index <= 6 }">
+					<c:forEach items="${list7 }" var="l" varStatus="idxStatus">
+					<c:if test="${idxStatus.index <= 7 }">
 					<c:if test="${not empty  l.CNT_TITLE_EN}">
 					<li>
-					<div style="width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+					<div style="line-height: 25px;width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
 						<a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a>
 					</div>
 					</li>
@@ -248,11 +248,11 @@ $(function(){
 			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;"><a style="color:white;" href="${path }/cnt/listEN.shtml?model=8&page=1">Special Column</a></p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
-					<c:forEach items="${list8 }" var="l">
-					<c:if test="${idxStatus.index <= 6 }">
+					<c:forEach items="${list8 }" var="l" varStatus="idxStatus">
+					<c:if test="${idxStatus.index <= 7 }" >
 					<c:if test="${not empty  l.CNT_TITLE_EN}">
 					<li>
-					<div style="width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+					<div style="line-height: 25px;width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
 						<a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a>
 					</div>
 					</li>
@@ -266,11 +266,11 @@ $(function(){
 			<p style="background-color: #1872a7;text-align: center;font-size: 16px;color:white;"><a style="color:white;" href="${path }/cnt/listEN.shtml?model=9&page=1">Grasp of civilization</a></p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
-					<c:forEach items="${list9 }" var="l">
-					<c:if test="${idxStatus.index <= 6 }">
+					<c:forEach items="${list9 }" var="l" varStatus="idxStatus">
+					<c:if test="${idxStatus.index <= 7 }">
 					<c:if test="${not empty  l.CNT_TITLE_EN}">
 					<li>
-					<div style="width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+					<div style="line-height: 25px;width: 160px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
 						<a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a>
 					</div>
 					</li>

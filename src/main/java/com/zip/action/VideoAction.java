@@ -27,8 +27,6 @@ public class VideoAction extends BaseAction{
 	
 	private void getData() {
 		Map<String, String> param = getParameterMapWithPageInfo();
-		param.put("sort", "INSERT_TIME");
-		param.put("order", "DESC");
 		request.setAttribute("list", videoInfoService.selectVideoInfoByList(param));
 		request.setAttribute("total", param.get("total"));
 	}

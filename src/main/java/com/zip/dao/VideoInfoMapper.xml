@@ -46,7 +46,7 @@
 	</select>
 
 	<select id="selectVideoInfoByList" parameterType="map" resultType="map">
-		SELECT <include refid="surfaceColumn"/> FROM VIDEO_INFO ORDER BY UPDATE_TIME DESC LIMIT 0, ${max}
+		SELECT <include refid="surfaceColumn"/> FROM VIDEO_INFO ORDER BY UPDATE_TIME DESC
 	</select>
 
 	<insert id="insertVideoInfo" parameterType="map">

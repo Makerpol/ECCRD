@@ -16,14 +16,14 @@ a {
 	text-decoration:none;
 }
 .top {
-	background: url(../images/1_CN.jpg) no-repeat 50% 40%;
+	background: url(../images/1_CN.jpg) no-repeat 50% 60%;
 	height: 200px;
 	width: 1030px;
 	/* margin-left: -50px; */
 	background-size: 100%;
 }
 .topEN {
-	background: url(../images/1_EN.jpg) no-repeat 50% 40%;
+	background: url(../images/1_EN.jpg) no-repeat 50% 60%;
 	height: 200px;
 	width: 1030px;
 	/* margin-left: -50px; */

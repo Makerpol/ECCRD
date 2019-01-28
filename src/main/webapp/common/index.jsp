@@ -9,7 +9,8 @@ request.setAttribute("path", BaseAction.getBaseUrl());%>
 <meta name="renderer" content="ie-comp|ie-stand">
 <meta name="full-screen" content="yes">
 <META http-equiv="X-UA-Compatible" content="IE=Edge" />
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<!--<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />-->
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0"/>
 <style>
 * {
 	font-size:14px/1.5;

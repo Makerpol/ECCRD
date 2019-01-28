@@ -114,6 +114,9 @@
 		<if test="type != null">
 		AND CNT_TYPE =#{type}
 		</if>
+		<if test="title_EN != null">
+		AND CNT_TITLE_EN is not null
+		</if>
 		ORDER BY INSERT_TIME DESC, CNT_ID DESC LIMIT 0, ${max}
 	</select>
 	
