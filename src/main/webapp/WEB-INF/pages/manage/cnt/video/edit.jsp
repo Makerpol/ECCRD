@@ -33,14 +33,14 @@
 	<div class="layui-inline">
     <label class="layui-form-label" style="width:170px;">中文标题：</label>
     <div class="layui-input-inline" style="width:220px;">
-    <input name="title" placeholder="中文标题" autocomplete="off" maxlength="9" class="layui-input" type="text" value="${data.VIDEO_TITLE }">
+    <input name="title" placeholder="中文标题" autocomplete="off" maxlength="50" class="layui-input" type="text" value="${data.VIDEO_TITLE }">
     </div>
     </div>
     
     <div class="layui-inline">
     <label class="layui-form-label" style="width:170px;">英文标题：</label>
     <div class="layui-input-inline" style="width:220px;">
-    <input name="title_EN" placeholder="英文标题" autocomplete="off" maxlength="9" class="layui-input" type="text" value="${data.VIDEO_TITLE_EN }">
+    <input name="title_EN" placeholder="英文标题" autocomplete="off" maxlength="50" class="layui-input" type="text" value="${data.VIDEO_TITLE_EN }">
     </div>
     </div>
     

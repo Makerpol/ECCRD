@@ -79,7 +79,9 @@
 	</select>
 	
 	<select id="selectLastInsertID" resultType="int">
-		SELECT LAST_INSERT_ID()
+		SELECT VIDEO_ID FROM (
+			SELECT <include refid="surfaceColumn"/>, MAX(UPDATE_TIME) FROM VIDEO_INFO GROUP BY VIDEO_ID
+		) a ORDER BY UPDATE_TIME DESC LIMIT 0, 1
 	</select>
 	
 </mapper>

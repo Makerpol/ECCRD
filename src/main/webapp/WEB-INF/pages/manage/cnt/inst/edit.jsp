@@ -62,10 +62,21 @@
 	
 	<div class="layui-form-item layui-form-text">
 	
-    <label class="layui-form-label" style="width:1300px;">文本内容：</label>
+    <label class="layui-form-label" style="width:1300px;">中文内容：</label>
     <div class="layui-input-inline" style="width:1300px;">
     <input type="hidden" id="content"  name="content" value=""/></li>
     <textarea id="ueditorCnt" cols="" rows=""  style="border:0px;padding:0px;width:1300px; height:610px; overflow:hidden;">${data.INST_CONTENT }</textarea>
+    </div>
+	
+	</div>
+	
+	<div class="layui-form-item layui-form-text">
+	
+    <label class="layui-form-label" style="width:1300px;">英文内容：</label>
+    <div class="layui-input-inline" style="width:1300px;">
+    <input type="hidden" id="content_EN"  name="content_EN"/></li>
+    <textarea id="ueditorCnt_EN" cols="" rows=""  style="border:0px;padding:0px;width:1300px; height:610px; overflow:hidden;">
+    </textarea>
     </div>
 	
 	</div>
@@ -90,7 +101,9 @@
 			$.messager.alert('消息','内容不能为空','info');
 			return;
 		}
+		var contentEN = UE.getEditor('ueditorCnt_EN').getContent();
 		$('#content').val(content);
+		$('#content_en').val(contentEN);
 		$.ajax({
 			url: $('#mainForm').attr('action'),
 			dataType:'json',
@@ -110,6 +123,10 @@
 	
 	$(function(){
 		var ue = UE.getEditor('ueditorCnt', {
+			initialFrameWidth: 1300,
+			initialFrameHeight: 500
+		});
+		UE.getEditor('ueditorCnt_EN', {
 			initialFrameWidth: 1300,
 			initialFrameHeight: 500
 		});

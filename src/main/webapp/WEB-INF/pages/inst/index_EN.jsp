@@ -29,7 +29,7 @@
 		</div>
 	</td>
 	<td style="padding-left: 10px;">
-		<div class="mod_list">
+		<div class="mod_list" style="background-color: white;">
 			<div class="line"></div>
 			<div class="m_body" style="padding: 10px 20px;min-height:500px;">
 				<c:forEach items="${list }" var="l">

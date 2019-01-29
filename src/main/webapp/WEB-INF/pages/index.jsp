@@ -57,7 +57,7 @@
 		<div class="tab-body">
 			<ul>
 				<c:forEach items="${list1 }" var="l">
-				<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right">${l.UPDATE_TIME_SIMPLE }</div></li>
+				<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right">${l.INSERT_TIME_SIMPLE }</div></li>
 				</c:forEach>
 			</ul>
 		</div>
@@ -72,7 +72,7 @@
 	<div class="tab-body">
 		<ul>
 			<c:forEach items="${list2 }" var="l">
-			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.INSERT_TIME_SIMPLE }</div></li>
 			</c:forEach>
 		</ul>
 	</div>
@@ -89,7 +89,7 @@
 		<ul>
 			<c:forEach items="${list3 }" var="l" varStatus="idxStatus">
 			<c:if test="${idxStatus.index <= 8 }">
-			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.INSERT_TIME_SIMPLE }</div></li>
 			</c:if>
 			</c:forEach>
 		</ul>
@@ -106,7 +106,7 @@
 	<div class="tab-body">
 		<ul>
 			<c:forEach items="${list4 }" var="l">
-			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.INSERT_TIME_SIMPLE }</div></li>
 			</c:forEach>
 		</ul>
 	</div>
@@ -126,7 +126,7 @@
 	</div>
 </div>
 </div>
-<div class="col-md-4 tab" style="margin-top: 10px;margin-left: 5px;border: 1px solid #F0F0F0;width:405px;">
+<div class="col-md-4 tab" style="margin-top: 10px;margin-left: 5px;border: 1px solid #F0F0F0;width:409px;">
 <div class="tab-model" style="height: 155px;">
 	<ol id="list5">
 		<li class="active"><a href='${path }/cnt/list.shtml?model=5&page=1'>OUTLOOK</a></li>
@@ -136,7 +136,7 @@
 		<ul>
 			<c:forEach items="${list5 }" var="l" varStatus="idxStatus">
 			<c:if test="${idxStatus.index <= 3 }">
-			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.INSERT_TIME_SIMPLE }</div></li>
 			</c:if>
 			</c:forEach>
 		</ul>
@@ -147,11 +147,11 @@
 		<li class="active"><a href='${path }/cnt/list.shtml?model=6&page=1'>过往成就</a></li>
 	</ol>
 	<a class="more" href="${path }/cnt/list.shtml?model=6&page=1">more</a>
-	<div class="tab-body" style="height: 115px;">
+	<div class="tab-body" style="height: 115px;margin-top:200px;">
 		<ul>
 			<c:forEach items="${list6 }" var="l" varStatus="idxStatus">
 			<c:if test="${idxStatus.index <= 3 }">
-			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			<li><div class="left">● <a href="${path }/cnt/detail/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE }">${l.CNT_TITLE }</a></div><div class="right" style="margin-right: -10px;">${l.INSERT_TIME_SIMPLE }</div></li>
 			</c:if>
 			</c:forEach>
 		</ul>

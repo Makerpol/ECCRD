@@ -28,7 +28,12 @@
 			<tr>
 				<td align="center">
 				<!-- 来源可换成角色名，在sql中加入获取角色的函数 -->
-					<div class="cnt_note">来源: <font style="color: red;">${data.USER_NAME }</font>&nbsp;&nbsp;&nbsp;发布时间: <font style="color: red;">${data.UPDATE_TIME_SIMPLE }</font></div>
+					<div class="cnt_note">来源: <font style="color: red;">
+					<c:choose>
+					<c:when test="${data.CNT_FROM eq null}">${data.USER_NAME }</c:when>
+					<c:otherwise>${data.CNT_FROM }</c:otherwise>
+					</c:choose>
+					</font>&nbsp;&nbsp;&nbsp;发布时间: <font style="color: red;">${data.INSERT_TIME_SIMPLE }</font></div>
 				</td>
 			</tr>
 			<tr>

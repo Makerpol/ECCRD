@@ -27,7 +27,7 @@
 			<tr>
 				<td align="center">
 				<!-- 来源可换成角色名，在sql中加入获取角色的函数 -->
-					<div class="cnt_note">Editor: <font style="color: red;">${data.USER_NAME_EN }</font>&nbsp;&nbsp;&nbsp;Time: <font style="color: red;">${data.UPDATE_TIME_SIMPLE }</font></div>
+					<div class="cnt_note">Editor: <font style="color: red;">${data.USER_NAME_EN }</font>&nbsp;&nbsp;&nbsp;Time: <font style="color: red;">${data.INSERT_TIME_SIMPLE }</font></div>
 				</td>
 			</tr>
 			<tr>

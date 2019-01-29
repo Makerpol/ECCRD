@@ -479,11 +479,12 @@ a {
 	background-color: #F0F0F0;
 	height:35px;
 	line-height: 35px;
-	width:95%;
+	/* width:95%; */
 }
 .cnt_table .cnt {
 	padding: 30px;
 	min-height: 300px;
+	background-color: white;
 }
 .title:hover {
 	z-index: 2;

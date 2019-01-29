@@ -85,7 +85,7 @@ public class EnglishAction extends BaseAction{
 			param.put("max", "9");
 			param.put("title_EN", "title_EN");
 			param.put("status", "1");		// 只取正常的
-			param.put("sort", "UPDATE_TIME");		// 设置排序
+			param.put("sort", "INSERT_TIME");		// 设置排序
 			param.put("order", "DESC");
 			request.setAttribute("list"+pMt.get("MT_ID"), cntInfoService.selectCntByList(param));
 			/*//根据父节点获取所有子节点

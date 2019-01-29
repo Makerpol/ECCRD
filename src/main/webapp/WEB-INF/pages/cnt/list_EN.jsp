@@ -27,14 +27,14 @@
 		</div>
 	</td>
 	<td style="padding-left: 10px;" valign="top">
-		<div class="mod_list">
+		<div class="mod_list" style="background-color: white;">
 			<div class="line"></div>
 			<div class="m_title"><c:if test="${type.MT_NAME == null || type.MT_NAME == ''}">All</c:if><c:if test="${type.MT_NAME != null && type.MT_NAME != ''}">${type.MT_NAME}</c:if></div>
 			<div class="m_body">
 				<ul class="m_body_ul">
 				<c:forEach items="${list }" var="l">
 				<c:if test="${not empty  l.CNT_TITLE_EN}">
-				<li><div class="left"><a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right">${l.UPDATE_TIME_SIMPLE }</div></li>
+				<li><div class="left"><a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right">${l.INSERT_TIME_SIMPLE }</div></li>
 				</c:if>
 				</c:forEach>
 				</ul>

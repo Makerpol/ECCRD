@@ -58,7 +58,7 @@
 			<ul>
 				<c:forEach items="${list1 }" var="l">
 				<c:if test="${not empty  l.CNT_TITLE_EN}">
-					<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right">${l.UPDATE_TIME_SIMPLE }</div></li>
+					<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right">${l.INSERT_TIME_SIMPLE }</div></li>
 				</c:if>
 				</c:forEach>
 			</ul>
@@ -75,7 +75,7 @@
 		<ul>
 			<c:forEach items="${list2 }" var="l">
 			<c:if test="${not empty  l.CNT_TITLE_EN}">
-			<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right" style="margin-right: -10px;">${l.INSERT_TIME_SIMPLE }</div></li>
 			</c:if>
 			</c:forEach>
 		</ul>
@@ -94,7 +94,7 @@
 			<c:forEach items="${list3 }" var="l" varStatus="idxStatus">
 			<c:if test="${idxStatus.index <= 7 }">
 			<c:if test="${not empty  l.CNT_TITLE_EN}">
-			<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right" style="margin-right: -10px;">${l.INSERT_TIME_SIMPLE }</div></li>
 			</c:if>
 			</c:if>
 			</c:forEach>
@@ -127,7 +127,7 @@
 			<c:forEach items="${list5 }" var="l" varStatus="idxStatus">
 			<c:if test="${idxStatus.index <= 7 }">
 			<c:if test="${not empty  l.CNT_TITLE_EN}">
-			<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right" style="margin-right: -10px;">${l.INSERT_TIME_SIMPLE }</div></li>
 			</c:if>
 			</c:if>
 			</c:forEach>
@@ -149,7 +149,7 @@
 	</div>
 </div>
 </div>
-<div class="col-md-4 tab" style="margin-top: 10px;margin-left: 5px;border: 1px solid #F0F0F0;width:405px;">
+<div class="col-md-4 tab" style="margin-top: 10px;margin-left: 5px;border: 1px solid #F0F0F0;width:409px;">
 <div class="tab-model">
 	<ol id="list6">
 		<li class="active"><a href='${path }/cnt/listEN.shtml?model=6&page=1'>Past Achievements</a></li>
@@ -160,7 +160,7 @@
 			<c:forEach items="${list6 }" var="l" varStatus="idxStatus">
 			<c:if test="${idxStatus.index <= 8 }">
 			<c:if test="${not empty  l.CNT_TITLE_EN}">
-			<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right" style="margin-right: -10px;">${l.UPDATE_TIME_SIMPLE }</div></li>
+			<li><div class="left">● <a href="${path }/cnt/detailEN/${l.CNT_MODEL}/${l.CNT_ID}.shtml" target="_blank" title="${l.CNT_TITLE_EN }">${l.CNT_TITLE_EN }</a></div><div class="right" style="margin-right: -10px;">${l.INSERT_TIME_SIMPLE }</div></li>
 			</c:if>
 			</c:if>
 			</c:forEach>
