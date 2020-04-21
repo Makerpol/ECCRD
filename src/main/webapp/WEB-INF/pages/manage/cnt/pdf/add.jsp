@@ -28,7 +28,7 @@
     </div>
 	</div>
 	
-    <div class="layui-inline">
+    <%-- <div class="layui-inline">
     <label class="layui-form-label" style="width:120px;"><span class="layui-badge-dot layui-bg-green" title="必填"></span> 类型：</label>
     <div class="layui-input-inline" style="width:220px;">
     <div class="layui-input-block" style="width:200px;margin-left:0px;">
@@ -39,7 +39,7 @@
 		</select>
 	</div>
     </div>
-    </div>
+    </div> --%>
     
     <!-- 单元格 -->
     <div class="layui-inline">

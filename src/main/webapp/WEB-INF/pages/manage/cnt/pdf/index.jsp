@@ -32,7 +32,7 @@
 	<tr>
 	<td align="right" width=100>标题：</td><td align="left" width=230>
 	<input name="title" placeholder="" autocomplete="off" class="layui-input" type="text"></td>
-	<td align="right" width=100>类型：</td><td width=230>
+	<%-- <td align="right" width=100>类型：</td><td width=230>
 	<div class="layui-input-block" style="width:200px;margin-left:0px;">
 		<select name="type" lay-filter="type" id="type">
 			<option value="">全部</option>
@@ -41,7 +41,7 @@
 			</c:forEach>
 		</select>
 	</div>
-	</td>
+	</td> --%>
 	<td align="right" width=100>更新时间：</td>
 	<td align="left" width=230>
 	<div class="layui-inline">
@@ -89,7 +89,7 @@
 	<th lay-data="{field:'PDF_ID',width:80,sort:true,fixed:'left'}">ID</th>
 	<th lay-data="{field:'PDF_TITLE',width:700,sort:true,fixed:'left'}">标题</th>
 	<th lay-data="{field:'USER_ID',width:110,templet:'#userId'}">操作人</th>
-	<th lay-data="{field:'PDF_TYPE',width:110,sort:true,templet:'#typeDiv'}">类型</th>
+	<!-- <th lay-data="{field:'PDF_TYPE',width:110,sort:true,templet:'#typeDiv'}">类型</th> -->
 	<th lay-data="{field:'INSERT_TIME',width:110,sort:true,templet:'#insertTime'}">添加时间</th>
 	<th lay-data="{field:'UPDATE_TIME',width:110,sort:true,templet:'#updateTime'}">更新时间</th>
 	<th lay-data="{field:'PDF_STATUS',width:90,sort:true,templet:'#status'}">状态</th>
