@@ -217,7 +217,7 @@ $(function(){
 		</div>
 		
 		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:250px;margin-left: 5px;margin-top: 10px;">
-			<p style="background-color: #1872a7;text-align: center;font-size: 16px;"><a style="color:white;" href="${path }/cnt/list.shtml?model=7&page=1">阿玛丽杜专栏</a></p>
+			<p style="background-color: #1872a7;text-align: center;font-size: 16px;"><a style="color:white;" href="${path }/cnt/list.shtml?model=7&page=1">玛蒂亚杜专栏</a></p>
 			<div >
 				<ul style="list-style: none;margin-left: -30px;">
 					<c:forEach items="${list7 }" var="l" varStatus="idxStatus">
@@ -229,7 +229,7 @@ $(function(){
 					</li>
 					</c:if>
 					</c:forEach>
-				</ul>
+				</ul> 
 			</div>
 		</div>
 		<div class="main" style="border: 3px solid #bfe2f9;border-radius: 5px; width: 182px;height:250px;margin-left: 5px;margin-top: 10px;">

@@ -4,7 +4,7 @@
 <html>
 <!-- 空白首页，跳转到真实首页 -->
 <head>
-<title>河南省软科学研究公共服务平台</title>
+<title>欧中发展研究中心</title>
 <jsp:include page="/common/index.jsp" />
 </head>
 <body>

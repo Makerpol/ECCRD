@@ -15,7 +15,7 @@
 	<td style="width: 260px;" valign="top">
 		<div class="mod_div">
 			<div class="line"></div>
-			<div class="m_title">机构概况</div>
+			<div class="m_title">关于ECCRD</div>
 			<div class="m_body">
 				<ul>
 					<c:forEach items="${types }" var="t">
