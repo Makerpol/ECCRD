@@ -8,7 +8,7 @@
 			<div class="col-md-12">
 				<div>
 					<p style="color:#66666;font-size:14px;">all right reserved by ECCRD</p>
-					<p style="color:#66666;font-size:14px;">Contact us</p>
+					<p style="color:#66666;font-size:14px;">Contact us ： eccrdoffice@gmail.com</p>
 				</div>
 			</div>
 		</div>

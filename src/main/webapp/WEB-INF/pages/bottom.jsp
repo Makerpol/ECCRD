@@ -8,7 +8,7 @@
 			<div class="col-md-12">
 				<div>
 					<p style="color:#66666;font-size:14px;">欧中发展研究中心版权所有</p>
-					<p style="color:#66666;font-size:14px;">联系我们</p>
+					<p style="color:#66666;font-size:14px;">联系我们：eccrdoffice@gmail.com</p>
 				</div>
 			</div>
 		</div>
